@@ -1,0 +1,8 @@
+MEDIAGOBLIN_DIR="/usr/share/mediagoblin"
+MEDIAGOBLIN_CMD="${MEDIAGOBLIN_DIR}/bin/paster"
+MEDIAGOBLIN_PID="/run/mediagoblin/mediagoblin.pid"
+MEDIAGOBLIN_LOG="/var/log/mediagoblin/paste.log"
+MEDIAGOBLIN_USER="mediagoblin"
+MEDIAGOBLIN_GROUP="mediagoblin"
+MEDIAGOBLIN_ARGS="serve paste.ini --log-file=${MEDIAGOBLIN_LOG} --pid-file=${MEDIAGOBLIN_PID} --daemon --server-name=fcgi fcgi_host=127.0.0.1 fcgi_port=26543"
+
