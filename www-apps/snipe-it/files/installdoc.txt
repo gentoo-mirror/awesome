@@ -1,0 +1,4 @@
+You've successfully setup Snipe IT at http://${VHOST_HOSTNAME}/.
+
+Please follow the installation/upgrade instructions here:
+http://snipeitapp.com/documentation/upgrading/
