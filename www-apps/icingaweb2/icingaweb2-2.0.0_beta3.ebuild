@@ -29,9 +29,10 @@ pkg_setup() {
 		depend.apache_pkg_setup
 	fi
 
+	enewgroup icingaweb2
 	enewgroup icingacmd
-	use nginx && usermod -a -G icingacmd nginx
-	use apache2 && usermod -a -G icingacmd apache2
+	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
+	use apache2 && usermod -a -G icingacmd,icingaweb2 apache2
 }
 
 pkg_config() {
