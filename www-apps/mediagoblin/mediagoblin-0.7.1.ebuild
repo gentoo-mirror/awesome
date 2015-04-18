@@ -18,8 +18,7 @@ KEYWORDS="~amd64"
 IUSE="+nginx +ldap"
 
 DEPEND="${PYTHON_DEPS}
-		dev-db/postgresql-server 
-		dev-db/postgresql-base
+		dev-db/postgresql[server]
 		dev-python/virtualenv[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
