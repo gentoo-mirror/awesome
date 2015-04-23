@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-office/odoo/odoo-7.0.20130219-r5.ebuild,v 1.2 2013/03/11 03:10:59 patrick Exp $
 
-EAPI="3"
-PYTHON_DEPEND="2"
+EAPI="5"
 
 inherit eutils distutils user
 
@@ -14,7 +13,8 @@ FNAME="${PN}_8.0rc1-latest.tar"
 SRC_URI="http://nightly.openerp.com/8.0/nightly/src/${FNAME}"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+# Masked as the ebuild is a work in progress
+KEYWORDS=""
 IUSE="+postgres ldap ssl"
 
 CDEPEND="postgres? ( dev-db/postgresql[server] )
@@ -49,6 +49,7 @@ CDEPEND="postgres? ( dev-db/postgresql[server] )
 	dev-python/mock
 	dev-python/unittest2
 	dev-python/jinja
+	dev-libs/libxslt
 "
 
 RDEPEND="${CDEPEND}"
