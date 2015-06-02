@@ -90,7 +90,7 @@ src_install() {
 	doinitd	"${FILESDIR}/init.d/celery-worker"
 
 	doconfd "${FILESIDR}/conf.d/mediagoblin"
-	doconfd "{$FILESDIR}/conf.d/celery-worker"
+	doconfd "${FILESDIR}/conf.d/celery-worker"
 
 	dodir "/usr/share/mediagoblin/user_dev"
 	fperms 0755 "/usr/share/mediagoblin/user_dev"
