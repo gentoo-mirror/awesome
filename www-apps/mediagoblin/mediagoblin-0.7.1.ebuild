@@ -71,12 +71,15 @@ src_install() {
 
     # Remove pre-compiled files to properly
 	# remove the hardcoded install dir in the following
-	find . -iname '*.pyc' -remove
+	find . -iname '*.pyc' | while read pyc ; do
+		#elog "Remove pre-compiled \"$pyc\" ..."
+		rm "$pyc"
+	done
 
 	# Replace hardcoded install dir
     grep "${WORKDIR}/${PF}" * -R | while read f ; do
         file=$(echo "$f" | awk -F':' '{print $1}')
-		elog "Patching \"$file\" ..."
+		#elog "Patching \"$file\" ..."
         sed -s "s#${WORKDIR}/${PF}#/usr/share/mediagoblin#g" -i $file
     done
 
@@ -89,7 +92,7 @@ src_install() {
 	doinitd "${FILESDIR}/init.d/mediagoblin"
 	doinitd	"${FILESDIR}/init.d/celery-worker"
 
-	doconfd "${FILESIDR}/conf.d/mediagoblin"
+	doconfd "${FILESDIR}/conf.d/mediagoblin"
 	doconfd "${FILESDIR}/conf.d/celery-worker"
 
 	dodir "/usr/share/mediagoblin/user_dev"
