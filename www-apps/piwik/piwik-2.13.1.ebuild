@@ -7,7 +7,7 @@ inherit webapp depend.php
 
 DESCRIPTION="Piwik is a downloadable, open source (GPL licensed) real time web analytics software program."
 HOMEPAGE="http://www.piwik.org/"
-SRC_URI="http://builds.piwik.org/piwik-${PV}.tar.gz"
+SRC_URI="http://builds.piwik.org/piwik-${PV}.zip"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
