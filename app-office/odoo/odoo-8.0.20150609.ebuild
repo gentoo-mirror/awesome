@@ -4,17 +4,16 @@
 
 EAPI="5"
 
-inherit eutils distutils user
+inherit eutils distutils user versionator
+
+BASE_VERSION="$( get_version_component_range 1-2 )"
 
 DESCRIPTION="Open Source ERP & CRM"
 HOMEPAGE="http://www.odoo.com/"
-# too layz to make this in a clean way
-FNAME="${PN}_8.0rc1-latest.tar"
-SRC_URI="http://nightly.openerp.com/8.0/nightly/src/${FNAME}"
+SRC_URI="http://nightly.odoo.com/${BASE_VERSION}/nightly/src/${PN}_${PV}.tar.gz"
 
 SLOT="0"
-# Masked as the ebuild is a work in progress
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+postgres ldap ssl"
 
 CDEPEND="postgres? ( dev-db/postgresql[server] )
