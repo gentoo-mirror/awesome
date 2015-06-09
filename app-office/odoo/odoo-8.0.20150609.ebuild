@@ -14,6 +14,7 @@ SRC_URI="http://nightly.odoo.com/${BASE_VERSION}/nightly/src/${PN}_${PV}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 IUSE="+postgres ldap ssl"
 
 CDEPEND="postgres? ( dev-db/postgresql[server] )
@@ -23,12 +24,12 @@ CDEPEND="postgres? ( dev-db/postgresql[server] )
 	dev-python/pyPdf
 	dev-python/pyparsing
 	dev-python/passlib
-	dev-python/imaging
+	virtual/python-imaging[jpeg]
 	dev-python/decorator
 	dev-python/psutil
 	dev-python/docutils
 	dev-python/lxml
-	dev-python/psycopsdg:2
+	dev-python/psycopg:2
 	dev-python/pychart
 	dev-python/reportlab
 	media-gfx/pydot
@@ -67,22 +68,25 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 
-#	mv ${WORKDIR}/${PN}-* $S
-	mv ${WORKDIR}/openerp-* $S
+	mv ${WORKDIR}/${PN}-* $S
 }
 
 src_install() {
 	distutils_src_install
 
-	newinitd "${FILESDIR}/odoo-initd-${BASE_VERSION}" "${PN}"
-	newconfd "${FILESDIR}/odoo-confd-${BASE_VERSION}" "${PN}"
+	newinitd "${FILESDIR}/odoo.initd" "${PN}"
+	newconfd "${FILESDIR}/odoo.confd" "${PN}"
 	keepdir /var/log/odoo
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/odoo.logrotate odoo || die
+	
 	dodir /etc/odoo
 	insinto /etc/odoo
-	newins "${FILESDIR}"/odoo-cfg-${BASE_VERSION} odoo.cfg || die
+	newins "${FILESDIR}"/odoo.cfg odoo.cfg || die
+
+	dodir /var/lib/odoo
+	keepdir /var/lib/odoo
 }
 
 pkg_preinst() {
@@ -90,17 +94,14 @@ pkg_preinst() {
 	enewuser ${ODOO_USER} -1 -1 -1 ${ODOO_GROUP}
 
 	fowners ${ODOO_USER}:${ODOO_GROUP} /var/log/odoo
-	fowners -R ${ODOO_USER}:${ODOO_GROUP} "$(python_get_sitedir)/${PN}/addons/"
+	fowners ${ODOO_USER}:${ODOO_GROUP} /var/lib/odoo
 
 	use postgres || sed -i '6,8d' "${D}/etc/init.d/odoo" || die "sed failed"
 }
 
 pkg_postinst() {
-	chown ${ODOO_USER}:${ODOO_GROUP} /var/log/odoo
-	chown -R ${ODOO_USER}:${ODOO_GROUP} "$(python_get_sitedir)/${PN}/addons/"
-
 	elog "In order to create the database user, run:"
-	elog " emerge --config =${CATEGORY}/${PF}"
+	elog " emerge --config '=${CATEGORY}/${PF}'"
 	elog "Be sure the database is started before"
 	elog
 	elog "Use odoo web interface in order to create a "

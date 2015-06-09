@@ -9,7 +9,7 @@ inherit git-2 python-single-r1 user
 DESCRIPTION="A federated, autonomous-style platform to host various forms of media"
 HOMEPAGE="http://mediagoblin.org/"
 
-EGIT_REPO_URI="https://gitorious.org/mediagoblin/mediagoblin.git"
+EGIT_REPO_URI="git://git.savannah.gnu.org/mediagoblin.git"
 EGIT_COMMIT="v${PV}"
 
 LICENSE="AGPLv3+"
@@ -23,7 +23,7 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	enewuser mediagoblin -1 /sbin/nologin /usr/share/mediagoblin
+	enewuser mediagoblin -1 -1 /usr/share/mediagoblin
 }
 
 src_unpack() {
@@ -41,7 +41,7 @@ src_prepare() {
 	source bin/activate
 	
 	einfo "Installing dependencies ..."
-	./bin/easy_install lxml Pillow psycopg2
+	./bin/easy_install lxml==3.4.1 Pillow==2.5.3 psycopg2==2.5.5
 	use ldap && ./bin/easy_install python-ldap
 	use nginx && ./bin/easy_install flup
 
@@ -67,9 +67,19 @@ src_prepare() {
 
 src_install() {
 
-    # Replace hardcoded install dir
+	# pwd = ${WORKDIR}/${PF}
+
+    # Remove pre-compiled files to properly
+	# remove the hardcoded install dir in the following
+	find . -iname '*.pyc' | while read pyc ; do
+		#elog "Remove pre-compiled \"$pyc\" ..."
+		rm "$pyc"
+	done
+
+	# Replace hardcoded install dir
     grep "${WORKDIR}/${PF}" * -R | while read f ; do
-        file=$(echo $f | awk -F':' '{print $1}')
+        file=$(echo "$f" | awk -F':' '{print $1}')
+		#elog "Patching \"$file\" ..."
         sed -s "s#${WORKDIR}/${PF}#/usr/share/mediagoblin#g" -i $file
     done
 
@@ -82,8 +92,8 @@ src_install() {
 	doinitd "${FILESDIR}/init.d/mediagoblin"
 	doinitd	"${FILESDIR}/init.d/celery-worker"
 
-	doconfd "${FILESIDR}/conf.d/mediagoblin"
-	doconfd "{$FILESDIR}/conf.d/celery-worker"
+	doconfd "${FILESDIR}/conf.d/mediagoblin"
+	doconfd "${FILESDIR}/conf.d/celery-worker"
 
 	dodir "/usr/share/mediagoblin/user_dev"
 	fperms 0755 "/usr/share/mediagoblin/user_dev"

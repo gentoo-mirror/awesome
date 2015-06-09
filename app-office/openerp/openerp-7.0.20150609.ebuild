@@ -1,19 +1,15 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openerp/openerp-7.0.20130219-r5.ebuild,v 1.2 2013/03/11 03:10:59 patrick Exp $
 
-EAPI="3"
+EAPI="5"
 PYTHON_DEPEND="2"
 
-inherit eutils distutils user
+inherit eutils distutils user versionator
 
 DESCRIPTION="Open Source ERP & CRM"
-HOMEPAGE="http://www.openerp.com/"
-#yes, this is definitely a horrible URI
-# base version
-BASE_VERSION="7.0"
-FNAME="${PN}-${BASE_VERSION}-latest.tar.gz"
-SRC_URI="http://nightly.openerp.com/7.0/nightly/src/${FNAME}"
+HOMEPAGE="http://www.odoo.com/"
+BASE_VERSION="$( get_version_component_range 1-2 )"
+SRC_URI="http://nightly.odoo.com/${BASE_VERSION}/nightly/src/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -70,15 +66,15 @@ src_unpack() {
 src_install() {
 	distutils_src_install
 
-	newinitd "${FILESDIR}/openerp-initd-${BASE_VERSION}" "${PN}"
-	newconfd "${FILESDIR}/openerp-confd-${BASE_VERSION}" "${PN}"
+	newinitd "${FILESDIR}/openerp.initd" "${PN}"
+	newconfd "${FILESDIR}/openerp.confd" "${PN}"
 	keepdir /var/log/openerp
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openerp.logrotate openerp || die
 	dodir /etc/openerp
 	insinto /etc/openerp
-	newins "${FILESDIR}"/openerp-cfg-${BASE_VERSION} openerp.cfg || die
+	newins "${FILESDIR}"/openerp.cfg openerp.cfg || die
 }
 
 pkg_preinst() {

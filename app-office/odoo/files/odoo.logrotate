@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-office/openerp/files/openerp.logrotate,v 1.1 2012/10/30 09:27:35 patrick Exp $
 
-/var/log/openerp/*.log {
+/var/log/odoo/*.log {
  monthly
- create 660 openerp openerp
+ create 660 odoo odoo
  missingok
  copytruncate
 }
