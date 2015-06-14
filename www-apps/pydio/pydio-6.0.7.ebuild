@@ -13,10 +13,10 @@ RESTRICTION="mirror"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+webdav"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="webdav? ( dev-php/PEAR-HTTP_WebDAV_Client )"
+RDEPEND="${DEPEND}"
 
 need_php_httpd
 
