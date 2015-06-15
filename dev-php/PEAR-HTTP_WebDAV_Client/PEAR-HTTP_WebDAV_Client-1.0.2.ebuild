@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit php-pear-r1
+inherit php-pear-r1 eutils
 
 DESCRIPTION="WebDAV stream wrapper class"
 
@@ -15,3 +15,8 @@ IUSE=""
 
 RDEPEND="dev-lang/php
 dev-php/PEAR-HTTP_Request"
+
+src_prepare() {
+	cd ${S}
+	epatch "${FILESDIR}/fix-propfind-response-parser.patch"
+}
