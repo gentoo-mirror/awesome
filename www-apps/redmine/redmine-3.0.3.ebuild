@@ -14,9 +14,10 @@ BACKLOG_GIT_REPO_URI="https://github.com/backlogs/redmine_backlogs.git"
 BACKLOG_GIT_COMMIT="v1.0.6"
 
 RECURRING_TASKS_GIT_REPO_URI="https://github.com/nutso/redmine-plugin-recurring-tasks.git"
-RECURRING_TASKS_GIT_COMMIT="v.1.6.0"
+RECURRING_TASKS_GIT_COMMIT="v1.6.0"
 
-KEYWORDS="~amd64 ~x86"
+# backlogs plugin does not support redmine 3, masked for now
+KEYWORDS=""
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+ldap +imagemagick passenger backlog recurring-tasks postgres sqlite +mysql"
@@ -47,6 +48,7 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
+	# TODO(rlutz,20150619): use git eclass to clone repos into disfiles and copy them from there
 	if use backlog ; then
 		pushd plugins
 		git clone ${BACKLOG_GIT_REPO_URI} redmine_backlogs
@@ -56,6 +58,10 @@ all_ruby_prepare() {
 		# Set fixed icalendar version to be compatible with i.e.
 		# https://github.com/buschmais/redmics/blob/master/Gemfile
 		sed -s 's#gem "icalendar"#gem "icalendar", ">=1.1.6", "<=1.5.3"#' -i Gemfile
+
+        # from plugins/redmine_backlogs/redmine_install.sh 
+        sed -i -e 's=.*gem ["'\'']capybara["'\''].*==g' Gemfile
+        sed -i -e 's=gem "simplecov".*=gem "simplecov", "~>0.9.1"=g' Gemfile
 
 		popd
 	fi
@@ -81,9 +87,10 @@ all_ruby_prepare() {
     local flag; for flag in imagemagick; do
         without+="$(use $flag || echo ' '$flag)"
     done
+
     # Deployment requires a valid Gemfile.lock which is not available from upstream
     #local bundle_args="--deployment ${without:+--without ${without}}"
-    local bundle_args="--path vendor/bundle ${without:+--without ${without}}"
+    local bundle_args="--path vendor/bundle ${without:+--without=\"${without}\"}"
 	
 	einfo "Running bundle install ${bundle_args} in ..."
 	/usr/bin/bundle install ${bundle_args} || die "bundler failed"	
