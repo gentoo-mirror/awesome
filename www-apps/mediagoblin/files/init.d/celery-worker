@@ -1,0 +1,40 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+command="${CELERY_WORKER_CMD}"
+command_args="${CELERY_WORKER_ARGS}"
+pidfile="${CELERY_WORKER_PID}"
+
+depend() {
+    need net logger
+    need postgresql
+
+    provide mediagoblin
+}
+
+start() {
+
+    ebegin "Starting ${SVCNAME}"
+
+    # Make sure the log and pid file exist and are writeable
+    for path in "${CELERY_WORKER_LOG}" "${CELERY_WORKER_PID}" ; do
+        dir=$(dirname $path)
+        sudo -u ${CELERY_WORKER_USER} test ! -d "${dir}" && \
+            mkdir $dir && \
+            chown ${CELERY_WORKER_USER} "${dir}"
+    done
+
+    export CELERY_CONFIG_MODULE=mediagoblin.init.celery.from_celery
+
+    start-stop-daemon --start \
+        --chdir ${CELERY_WORKER_DIR} \
+        --name ${SVCNAME} \
+        --exec ${command} \
+        --user ${CELERY_WORKER_USER}:${CELERY_WORKER_GROUP} \
+        --pidfile ${pidfile} \
+        -- ${command_args}
+    
+    eend $?
+}
