@@ -28,6 +28,7 @@ ruby_add_rdepend "
 DEPEND="
 	dev-ruby/bundler
 	imagemagick? ( media-gfx/imagemagick )
+	mysql? ( dev-db/mysql )
 	"
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -50,6 +51,9 @@ all_ruby_prepare() {
 
 	# TODO(rlutz,20150619): use git eclass to clone repos into disfiles and copy them from there
 	if use backlog ; then
+		
+		eerror "backlog plugin does not work with redmine 3, yet"
+		
 		pushd plugins
 		git clone ${BACKLOG_GIT_REPO_URI} redmine_backlogs
 		cd redmine_backlogs
