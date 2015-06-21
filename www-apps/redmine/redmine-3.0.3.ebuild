@@ -14,7 +14,7 @@ BACKLOG_GIT_REPO_URI="https://github.com/backlogs/redmine_backlogs.git"
 BACKLOG_GIT_COMMIT="v1.0.6"
 
 RECURRING_TASKS_GIT_REPO_URI="https://github.com/nutso/redmine-plugin-recurring-tasks.git"
-RECURRING_TASKS_GIT_COMMIT="v.1.6.0"
+RECURRING_TASKS_GIT_COMMIT="v1.6.0"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
