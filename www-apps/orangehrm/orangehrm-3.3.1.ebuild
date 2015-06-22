@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="5"
+
 inherit webapp depend.php
 
 DESCRIPTION="OrangeHRM is an Open Source Human Resource Management System"
@@ -14,7 +16,8 @@ RESTRICT="mirror"
 IUSE=""
 
 DEPEND="virtual/mysql
-		virtual/httpd-php"
+		virtual/httpd-php
+		dev-lang/php[mysqli]"
 RDEPEND=""
 
 need_httpd_cgi
@@ -49,7 +52,7 @@ src_install() {
 	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/Conf-auto.php
 	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/sysConf.php
 	
-	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
+	#webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 
 	webapp_src_install
 }
