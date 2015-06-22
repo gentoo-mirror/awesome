@@ -13,7 +13,8 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE=""
 
-DEPEND=""
+DEPEND="virtual/mysql
+		virtual/httpd-php"
 RDEPEND=""
 
 need_httpd_cgi
