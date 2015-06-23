@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/redmine-2.4.5.ebuild,v 1.1 2014/06/01 18:11:37 pva Exp $
 
 EAPI="5"
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Redmine is a flexible project management web application written using Ruby on Rails framework"
@@ -17,7 +17,7 @@ RECURRING_TASKS_GIT_REPO_URI="https://github.com/nutso/redmine-plugin-recurring-
 RECURRING_TASKS_GIT_COMMIT="v1.6.0"
 
 # backlogs plugin does not support redmine 3, masked for now
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+ldap +imagemagick passenger backlog recurring-tasks postgres sqlite +mysql"
@@ -29,6 +29,7 @@ DEPEND="
 	dev-ruby/bundler
 	imagemagick? ( media-gfx/imagemagick )
 	mysql? ( dev-db/mysql )
+	=dev-ruby/rake-10.4.2
 	"
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -209,7 +210,7 @@ pkg_config() {
 		einfo
 
 		einfo "Generating a session store secret."
-		${RUBY} -S rake generate_secret_token || die
+		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 		einfo "Creating the database structure."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
