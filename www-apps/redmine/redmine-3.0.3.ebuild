@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/redmine-2.4.5.ebuild,v 1.1 2014/06/01 18:11:37 pva Exp $
 
 EAPI="5"
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Redmine is a flexible project management web application written using Ruby on Rails framework"
@@ -16,6 +16,7 @@ BACKLOG_GIT_COMMIT="v1.0.6"
 RECURRING_TASKS_GIT_REPO_URI="https://github.com/nutso/redmine-plugin-recurring-tasks.git"
 RECURRING_TASKS_GIT_COMMIT="v1.6.0"
 
+# backlogs plugin does not support redmine 3, masked for now
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,6 +28,8 @@ ruby_add_rdepend "
 DEPEND="
 	dev-ruby/bundler
 	imagemagick? ( media-gfx/imagemagick )
+	mysql? ( dev-db/mysql )
+	=dev-ruby/rake-10.4.2
 	"
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -47,7 +50,11 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
+	# TODO(rlutz,20150619): use git eclass to clone repos into disfiles and copy them from there
 	if use backlog ; then
+		
+		eerror "backlog plugin does not work with redmine 3, yet"
+		
 		pushd plugins
 		git clone ${BACKLOG_GIT_REPO_URI} redmine_backlogs
 		cd redmine_backlogs
@@ -56,6 +63,10 @@ all_ruby_prepare() {
 		# Set fixed icalendar version to be compatible with i.e.
 		# https://github.com/buschmais/redmics/blob/master/Gemfile
 		sed -s 's#gem "icalendar"#gem "icalendar", ">=1.1.6", "<=1.5.3"#' -i Gemfile
+
+        # from plugins/redmine_backlogs/redmine_install.sh 
+        sed -i -e 's=.*gem ["'\'']capybara["'\''].*==g' Gemfile
+        sed -i -e 's=gem "simplecov".*=gem "simplecov", "~>0.9.1"=g' Gemfile
 
 		popd
 	fi
@@ -81,9 +92,10 @@ all_ruby_prepare() {
     local flag; for flag in imagemagick; do
         without+="$(use $flag || echo ' '$flag)"
     done
+
     # Deployment requires a valid Gemfile.lock which is not available from upstream
     #local bundle_args="--deployment ${without:+--without ${without}}"
-    local bundle_args="--path vendor/bundle ${without:+--without ${without}}"
+    local bundle_args="--path vendor/bundle ${without:+--without=\"${without}\"}"
 	
 	einfo "Running bundle install ${bundle_args} in ..."
 	/usr/bin/bundle install ${bundle_args} || die "bundler failed"	
@@ -198,7 +210,7 @@ pkg_config() {
 		einfo
 
 		einfo "Generating a session store secret."
-		${RUBY} -S rake generate_secret_token || die
+		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 		einfo "Creating the database structure."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
