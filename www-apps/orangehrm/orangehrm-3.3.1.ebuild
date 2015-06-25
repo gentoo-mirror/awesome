@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE=""
 
-DEPEND="virtual/mysql
+DEPEND=""
+RDEPEND="virtual/mysql
 		virtual/httpd-php
-		dev-lang/php[mysqli]"
-RDEPEND=""
+		dev-lang/php[mysqli,mysql]"
 
 need_httpd_cgi
 need_php_httpd
@@ -39,18 +39,17 @@ src_install() {
 	dodoc ${license}
 	dohtml ${htmldocs}
 	rm -f ${htmldocs}
-	#dohtml -r installer/guide installer/images
 	insinto "${MY_HTDOCSDIR}"
-	touch installer/log.txt
 	doins -r .
 		
 	webapp_configfile "${MY_HTDOCSDIR}"/lib/confs/Conf-auto.php
-	#webapp_configfile "${MY_HTDOCSDIR}"/lib/confs/cryptokeys/key.ohrm
 	webapp_configfile "${MY_HTDOCSDIR}"/lib/confs/sysConf.php
-	webapp_serverowned "${MY_HTDOCSDIR}"/installer/log.txt
-	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs
+
+	webapp_serverowned "${MY_HTDOCSDIR}"/lib/{confs,logs}
 	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/Conf-auto.php
 	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/sysConf.php
+	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/temp
+	webapp_serverowned "${MY_HTDOCSDIR}"/symfony/{config,apps/orangehrm/config,cache,log}
 	
 	#webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 
