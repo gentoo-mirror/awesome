@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="virtual/mysql
 		virtual/httpd-php
-		dev-lang/php[mysqli,mysql]"
+		dev-lang/php[mysqli,mysql,pdo]"
 
 need_httpd_cgi
 need_php_httpd
@@ -29,6 +29,7 @@ pkg_setup() {
 
 src_install() {
 	webapp_src_preinst
+
 	mv license/3rdParty/* license
 	rm -rf license/3rdParty
 	local docs="CHANGELOG.TXT README.TXT new_changed_features.txt"
@@ -41,6 +42,9 @@ src_install() {
 	rm -f ${htmldocs}
 	insinto "${MY_HTDOCSDIR}"
 	doins -r .
+
+	insinto "/etc/nginx/conf.d"
+	newins "${FILESDIR}/nginx.conf" "orangehrm"
 		
 	webapp_configfile "${MY_HTDOCSDIR}"/lib/confs/Conf-auto.php
 	webapp_configfile "${MY_HTDOCSDIR}"/lib/confs/sysConf.php
@@ -51,7 +55,7 @@ src_install() {
 	webapp_serverowned "${MY_HTDOCSDIR}"/lib/confs/temp
 	webapp_serverowned "${MY_HTDOCSDIR}"/symfony/{config,apps/orangehrm/config,cache,log}
 	
-	#webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
+	webapp_postinst_txt en "${FILESDIR}"/postinstall.txt
 
 	webapp_src_install
 }
