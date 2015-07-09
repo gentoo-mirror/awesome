@@ -50,6 +50,7 @@ CDEPEND="postgres? ( dev-db/postgresql[server] )
 	dev-python/unittest2
 	dev-python/jinja
 	dev-libs/libxslt
+	media-gfx/wkhtmltopdf
 "
 
 RDEPEND="${CDEPEND}"
