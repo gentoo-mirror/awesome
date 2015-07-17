@@ -29,7 +29,6 @@ DEPEND="
 	dev-ruby/bundler
 	imagemagick? ( media-gfx/imagemagick )
 	mysql? ( dev-db/mysql )
-	=dev-ruby/rake-10.4.2
 	"
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -181,7 +180,7 @@ pkg_config() {
 		eerror "Please update it via 'eselect ruby'"
 		die
 	fi
-	local RUBY=${RUBY:-ruby}
+	local RUBY=${RUBY:-bundle exec ruby}
 
 	cd "${EPREFIX}${REDMINE_DIR}" || die
 	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/session_store.rb" ]; then
