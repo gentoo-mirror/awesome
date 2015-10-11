@@ -3,6 +3,7 @@ app-office/odoo 8.0.20150609: Open Source ERP & CRM
 app-office/openerp 7.0.20150609: Open Source ERP & CRM
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-php/composer 1.0.0_alpha8: Dependency Manager for PHP
+net-analyzer/prometheus 0.16.0: Systems and service monitoring system
 net-analyzer/prometheus-node-exporter 0.12.0_rc1: Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
 www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2
