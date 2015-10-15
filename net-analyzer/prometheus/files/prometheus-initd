@@ -3,22 +3,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-exec=/usr/bin/prometheus
-config=/etc/prometheus.yml
+description="Prometheus Server"
+
+pidfile="/run/${SVCNAME}.pid"
+command=/usr/bin/prometheus
+command_args="${PROMETHEUS_ARGS}"
+command_background="true"
+
+start_stop_daemon_args="-u ${PROMETHEUS_USER} -1 ${PROMETHEUS_LOG_FILE} -2 ${PROMETHEUS_LOG_FILE}"
 
 depend() {
 	need net
-}
-
-start() {
-	ebegin "Starting Prometheus Server"
-	start-stop-daemon --start --quiet --exec ${exec} --\
-		-config.file=${config}
-	eend $?
-}
-
-stop() {
-	ebegin "Starting Prometheus Server"
-	start-stop-daemon --stop --quiet --exec ${exec}
-	eend $?
 }
