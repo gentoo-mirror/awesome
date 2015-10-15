@@ -37,8 +37,10 @@ src_compile() {
 src_install() {
 	insinto "/usr/bin"
 	newbin "node_exporter" "prometheus-node-exporter"
-	newconfd "${FILESDIR}/prometheus-node-exporter-confd" "prometheus-node-exporter"
-	newinitd "${FILESDIR}/prometheus-node-exporter-initd" "prometheus-node-exporter"	
+
+	newconfd "${FILESDIR}/${PN}-confd" "prometheus-node-exporter"
+	newinitd "${FILESDIR}/${PN}-initd" "prometheus-node-exporter"
+
 	keepdir "${LOG_DIR}"
 	fowners "${DAEMON_USER}" "${LOG_DIR}"
 }

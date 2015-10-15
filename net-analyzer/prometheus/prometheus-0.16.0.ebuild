@@ -4,9 +4,9 @@
 
 EAPI=5
 
-inherit golang-base
+inherit golang-base user
 
-DESCRIPTION="Systems and service monitoring system"
+DESCRIPTION="The Prometheus monitoring system and time series database"
 HOMEPAGE="http://prometheus.io"
 EGO_PN="github.com/${PN}/${PN}"
 SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz"
@@ -22,6 +22,14 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
+DAEMON_USER="prometheus"
+LOG_DIR="/var/log/prometheus"
+DATA_DIR="/var/lib/prometheus"
+
+pkg_setup() {
+	enewuser ${DAEMON_USER} -1 -1 "${DATA_DIR}"
+}
+
 src_unpack() {
 	default
 	mkdir -p temp/src/${EGO_PN%/*} || die
@@ -35,11 +43,18 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN}
-	dobin promtool
+	dobin "${PN}"
+	dobin "promtool"
 
-	insinto /etc/
-	doins documentation/examples/prometheus.yml
+	insinto "/etc/"
+	doins "documentation/examples/prometheus.yml"
 
-	doinitd "${FILESDIR}"/${PN}-initd
+	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
+
+    keepdir "${LOG_DIR}"
+	fowners "${DAEMON_USER}" "${LOG_DIR}"
+
+	keepdir "${DATA_DIR}"
+	fowners "${DAEMON_USER}" "${DATA_DIR}"
 }
