@@ -1,0 +1,41 @@
+PROMETHEUS_NODE_EXPORTER_USER="prometheus"
+
+PROMETHEUS_NODE_EXPORTER_ARGS=""
+
+#  -auth.pass string
+#    	Password for basic auth.
+#  -auth.user string
+#    	Username for basic auth.
+#  -collector.diskstats.ignored-devices string
+#    	Regexp of devices to ignore for diskstats. (default "^(ram|loop|fd|(h|s|v|xv)d[a-z])\\d+$")
+#  -collector.filesystem.ignored-mount-points string
+#    	Regexp of mount points to ignore for filesystem collector. (default "^/(sys|proc|dev)($|/)")
+#  -collector.megacli.command string
+#    	Command to run megacli. (default "megacli")
+#  -collector.netdev.ignored-devices string
+#    	Regexp of net devices to ignore for netdev collector. (default "^$")
+#  -collector.ntp.server string
+#    	NTP server to use for ntp collector.
+#  -collector.procfs string
+#    	procfs mountpoint. (default "/proc")
+#  -collector.supervisord.url string
+#    	XML RPC endpoint (default "http://localhost:9001/RPC2")
+#  -collector.sysfs string
+#    	sysfs mountpoint. (default "/sys")
+#  -collector.textfile.directory string
+#    	Directory to read text files with metrics from.
+#  -collectors.enabled string
+#    	Comma-separated list of collectors to use. (default "diskstats,filefd,filesystem,loadavg,mdadm,meminfo,netdev,netstat,sockstat,stat,textfile,time,uname")
+#  -collectors.print
+#    	If true, print available collectors and exit.
+#  -debug.memprofile-file string
+#    	Write memory profile to this file upon receipt of SIGUSR1.
+#  -log.level value
+#    	Only log messages with the given severity or above. Valid levels: [debug, info, warn, error, fatal, panic]. (default info)
+#  -web.listen-address string
+#    	Address on which to expose metrics and web interface. (default ":9100")
+PROMETHEUS_NODE_EXPORTER_ARGS="${PROMETHEUS_NODE_EXPORTER_ARGS} -web.listen-address localhost:9100"
+#  -web.telemetry-path string
+#    	Path under which to expose metrics. (default "/metrics")
+
+PROMETHEUS_NODE_EXPORTER_LOG_FILE="/var/log/prometheus/node-exporter.log"

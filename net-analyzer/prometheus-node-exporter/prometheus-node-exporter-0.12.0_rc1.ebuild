@@ -4,9 +4,9 @@
 
 EAPI=5
 
-inherit golang-base
+inherit golang-base user
 
-DESCRIPTION="Prometheus exporter for machine metrics, written in Go with pluggable metric collectors."
+DESCRIPTION="Prometheus exporter for machine metrics."
 HOMEPAGE="http://prometheus.io"
 SRC_URI="https://github.com/prometheus/node_exporter/archive/${PV/_rc/rc}.tar.gz"
 
@@ -16,17 +16,29 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE=""
 
-DEPEND=">=dev-lang/go-1.5"
+DEPEND=">=dev-lang/go-1.5
+		dev-vcs/mercurial"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${P}/src/${EGO_PN}"
+S="${WORKDIR}/node_exporter-${PV/_rc/rc}"
+
+DAEMON_USER="prometheus"
+LOG_DIR="/var/log/prometheus"
+
+pkg_setup() {
+	enewuser ${DAEMON_USER}
+}
 
 src_compile() {
     export GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
-    emake build
+    emake
 }
 
 src_install() {
-	insinto /usr/bin
-	newbin node_exporter prometheus-node-exporter
+	insinto "/usr/bin"
+	newbin "node_exporter" "prometheus-node-exporter"
+	newconfd "${FILESDIR}/prometheus-node-exporter-confd" "prometheus-node-exporter"
+	newinitd "${FILESDIR}/prometheus-node-exporter-initd" "prometheus-node-exporter"	
+	keepdir "${LOG_DIR}"
+	fowners "${DAEMON_USER}" "${LOG_DIR}"
 }
