@@ -1,11 +1,13 @@
 app-backup/duplicity 0.7.03: Secure backup system using gnupg to encrypt data
 app-office/odoo 8.0.20150609: Open Source ERP & CRM
 app-office/openerp 7.0.20150609: Open Source ERP & CRM
+dev-go/go-sqlite3 1.1.0: sqlite3 driver for go that using database/sql
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-php/composer 1.0.0_alpha8: Dependency Manager for PHP
 net-analyzer/prometheus 0.16.0: The Prometheus monitoring system and time series database
 net-analyzer/prometheus-node-exporter 0.12.0_rc1: Prometheus exporter for machine metrics.
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
+www-apps/grafana 2.1.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
