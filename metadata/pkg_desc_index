@@ -9,7 +9,7 @@ www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updati
 www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
-www-apps/piwik 2.12.1 2.13.0 2.13.1 2.14.0 2.14.1: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
+www-apps/piwik 2.12.1 2.13.0 2.13.1 2.14.0 2.14.1 2.15.0: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
 www-apps/pydio 6.0.6 6.0.7: File sharing platform similar to dropbox
 www-apps/redmine 2.4.5-r1 2.5.2 3.0.3: Redmine is a flexible project management web application written using Ruby on Rails framework
 www-apps/snipe-it 1.1 1.2.5 1.2.6.1: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
