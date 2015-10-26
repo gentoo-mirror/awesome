@@ -1,7 +1,6 @@
 app-backup/duplicity 0.7.03: Secure backup system using gnupg to encrypt data
 app-office/odoo 8.0.20150609: Open Source ERP & CRM
 app-office/openerp 7.0.20150609: Open Source ERP & CRM
-dev-go/go-sqlite3 1.1.0: sqlite3 driver for go that using database/sql
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-php/composer 1.0.0_alpha8: Dependency Manager for PHP
 net-analyzer/prometheus 0.16.0: The Prometheus monitoring system and time series database
