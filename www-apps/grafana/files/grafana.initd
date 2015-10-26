@@ -10,13 +10,13 @@ depend() {
 start() {
 	ebegin "Starting grafana server"
 
-	touch /var/run/grafana.pid
-	chown ${GRAFANA_USER}:${GRAFANA_GROUP} /var/run/grafana.pid
+	touch /run/grafana.pid
+	chown ${GRAFANA_USER}:${GRAFANA_GROUP} /run/grafana.pid
 
 	start-stop-daemon --start -b \
 		--chdir /usr/share/grafana \
 		--user ${GRAFANA_USER}:${GRAFANA_GROUP} \
-		--exec /usr/sbin/grafana -- \
+		--exec /usr/bin/grafana-server -- \
 		-pidfile=/var/run/grafana.pid \
 		-config=/etc/grafana/grafana.ini \
 		cfg:default.paths.data=/var/lib/grafana \
