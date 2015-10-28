@@ -26,7 +26,7 @@ DAEMON_USER="prometheus"
 LOG_DIR="/var/log/prometheus"
 
 pkg_setup() {
-	enewuser ${DAEMON_USER}
+	enewuser ${DAEMON_USER} -1 -1 -1 "wheel"
 }
 
 src_compile() {
