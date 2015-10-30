@@ -1,3 +1,2 @@
-PROMETHEUS_NODE_EXPORTER_USER="prometheus"
-PROMETHEUS_NODE_EXPORTER_ARGS="-web.listen-address localhost:9100"
-PROMETHEUS_NODE_EXPORTER_LOG_FILE="/var/log/prometheus/node-exporter.log"
+PROMETHEUS_GLSA_EXPORTER_USER="prometheus"
+PROMETHEUS_GLSA_EXPORTER_LISTEN="localhost:8000"
