@@ -10,7 +10,7 @@ command=/usr/bin/prometheus-glsa-exporter
 command_args="${PROMETHEUS_GLSA_EXPORTER_ARGS}"
 command_background="true"
 
-start_stop_daemon_args="-u ${PROMETHEUS_GLSA_EXPORTER_USER} -l ${PROMETHEUS_GLSA_EXPORTER_LISTEN}"
+start_stop_daemon_args="-u ${PROMETHEUS_GLSA_EXPORTER_USER}"
 
 depend() {
 	need net
