@@ -35,12 +35,15 @@ src_unpack() {
 src_install() {
 	dobin "${PN}"
 
-	insinto "/etc/"
-	doins "${FILESDIR}/${PN}.conf"	
+	insinto "/etc/prometheus"
+	newins "${FILESDIR}/${PN}.conf" "alertmanager.conf"
 
 	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
 
   keepdir "${LOG_DIR}"
 	fowners "${DAEMON_USER}" "${LOG_DIR}"
+
+	keepdir "${DATA_DIR}/alertmanager"
+	fowners "${DAEMON_USER}" "${DATA_DIR}/alertmanager"
 }
