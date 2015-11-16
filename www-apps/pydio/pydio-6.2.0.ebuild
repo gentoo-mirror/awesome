@@ -32,6 +32,8 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r ${S}/*
 
+	dodoc "${FILESDIR}"/6.2.0.mysql
+
 	find "data" -type d | while read dir ; do
 		webapp_serverowned "${MY_HTDOCSDIR}/${dir}"
 	done
@@ -46,4 +48,6 @@ src_install() {
 
 pkg_postinst() {
 	webapp_pkg_postinst
+
+	einfo "You have to update your existing databases with the scripts found in the doc dir"
 }
