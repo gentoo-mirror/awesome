@@ -50,4 +50,6 @@ pkg_postinst() {
 	webapp_pkg_postinst
 
 	einfo "You have to update your existing databases with the scripts found in the doc dir"
+	einfo "Also delete all plugin related cache files in your installations:"
+	einfo " $ rm -rf <path_to_installation>/data/cache/plugins*"
 }
