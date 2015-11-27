@@ -11,4 +11,4 @@ SLOT=6.2.0
 SRC_URI=http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.2.0/pydio-core-6.2.0.tar.gz/download -> pydio-6.2.0.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_install:-
 _eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=e4fb0268774f17bfd3e221d90c3b1f9a
+_md5_=59dd02cde7cf7b95dc2df424cb8be8c0
