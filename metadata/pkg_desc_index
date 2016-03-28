@@ -1,4 +1,5 @@
 app-backup/duplicity 0.7.03: Secure backup system using gnupg to encrypt data
+app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
 app-office/odoo 8.0.20150609: Open Source ERP & CRM
 app-office/openerp 7.0.20150609: Open Source ERP & CRM
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
