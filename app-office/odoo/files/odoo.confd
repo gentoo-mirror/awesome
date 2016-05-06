@@ -1,0 +1,4 @@
+USER="odoo"
+CONFIGFILE="/etc/odoo/odoo.cfg"
+LOGFILE="/var/log/odoo/odoo-server.log"
+PIDFILE="/run/odoo/odoo.pid"
