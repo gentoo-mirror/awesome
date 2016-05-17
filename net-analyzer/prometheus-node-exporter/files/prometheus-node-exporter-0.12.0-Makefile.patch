@@ -1,0 +1,11 @@
+--- src/github.com/prometheus/node_exporter/Makefile.orig	2016-05-17 16:32:58.804000000 +0200
++++ src/github.com/prometheus/node_exporter/Makefile	2016-05-17 16:35:14.605000000 +0200
+@@ -41,7 +41,7 @@
+ 
+ build: promu
+ 	@echo ">> building binaries"
+-	@$(PROMU) build --prefix $(PREFIX)
++	@$(PROMU) build --prefix node_exporter
+ 
+ tarball: promu
+ 	@echo ">> building release tarball"

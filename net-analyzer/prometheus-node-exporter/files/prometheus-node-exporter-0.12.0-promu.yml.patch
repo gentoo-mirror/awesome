@@ -1,0 +1,12 @@
+--- src/github.com/prometheus/node_exporter/.promu.yml.orig	2016-05-17 13:11:00.050000000 +0200
++++ src/github.com/prometheus/node_exporter/.promu.yml	2016-05-17 13:11:34.528000000 +0200
+@@ -9,6 +9,9 @@
+         -X {{repoPath}}/vendor/github.com/prometheus/common/version.Branch={{.Branch}}
+         -X {{repoPath}}/vendor/github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
+         -X {{repoPath}}/vendor/github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
++    binaries:
++        - name: export_node
++          path: ./export_node/export_node
+ tarball:
+     files:
+         - LICENSE

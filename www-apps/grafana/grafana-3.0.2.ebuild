@@ -23,7 +23,8 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	>=net-libs/nodejs-0.12
-	>=dev-lang/go-1.4"
+	>=dev-lang/go-1.4
+	!www-apps/grafana-plugins-prometheus"
 
 pkg_setup() {
 	enewgroup grafana
