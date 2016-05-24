@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=>=net-libs/nodejs-0.10.40 dev-db/mongodb
+DESCRIPTION=The ultimate open source web chat platform
+EAPI=5
+HOMEPAGE=https://rocket.chat/
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=net-libs/nodejs-0.10.40 dev-db/mongodb
+SLOT=0
+SRC_URI=https://rocket.chat/releases/0.31.0/download -> rocket-chat-0.31.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=9371f93f82e627d2dd8e5fdf1d072906
