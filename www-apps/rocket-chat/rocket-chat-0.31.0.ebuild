@@ -55,6 +55,6 @@ src_install()
 	keepdir "${ROCKET_LOG}"
 	fowners "${ROCKET_USER}:${ROCKET_GROUP}" "${ROCKET_LOG}"
 
-	doconfd "${FILESDIR}/${P}-conf.d"
-	doinitd "${FILESDIR}/${P}-init.d"
+	newconfd "${FILESDIR}/${P}-conf.d" "rocket-chat"
+	newinitd "${FILESDIR}/${P}-init.d" "rocket-chat"
 }
