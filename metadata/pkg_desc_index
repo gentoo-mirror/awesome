@@ -11,6 +11,7 @@ net-analyzer/prometheus-alertmanager 0.0.4 0.1.1: The Prometheus monitoring syst
 net-analyzer/prometheus-node-exporter 0.12.0_rc1 0.12.0: Prometheus exporter for machine metrics.
 net-im/ejabberd 15.10: The Erlang Jabber Daemon
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
+www-apps/etherpad-lite 1.6.0: A really-real time collaborative word processor for the web
 www-apps/grafana 2.1.3 3.0.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/grafana-plugins-prometheus 2.3.1: Grafana datasource for Prometheus Monitoring
 www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2

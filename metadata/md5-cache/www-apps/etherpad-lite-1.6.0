@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=>=net-libs/nodejs-0.10.40
+DESCRIPTION=A really-real time collaborative word processor for the web
+EAPI=5
+HOMEPAGE=http://etherpad.org
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/nodejs-0.10.40
+SLOT=0
+SRC_URI=https://github.com/ether/etherpad-lite/archive/1.6.0.tar.gz -> etherpad-lite-1.6.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=d5249bdaddcfcd7ec85fefec7f594106
