@@ -4,7 +4,7 @@ app-emulation/aws-cli 1.10.26: Universal Command Line Interface for Amazon Web S
 app-office/odoo 8.0.20150609: Open Source ERP & CRM
 app-office/openerp 7.0.20150609: Open Source ERP & CRM
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
-dev-php/composer 1.0.0_alpha8: Dependency Manager for PHP
+dev-php/composer 1.0.0_alpha8 1.1.2: Dependency Manager for PHP
 dev-python/s3transfer 0.0.1: An Amazon S3 Transfer Manager for Python
 net-analyzer/prometheus 0.16.0 0.16.1 0.18.0: The Prometheus monitoring system and time series database
 net-analyzer/prometheus-alertmanager 0.0.4 0.1.1: The Prometheus monitoring system and time series database
@@ -22,4 +22,4 @@ www-apps/pydio 6.0.6 6.0.7 6.0.8 6.2.0: File sharing platform similar to dropbox
 www-apps/redmine 2.4.5-r1 2.5.2 3.0.3: Redmine is a flexible project management web application written using Ruby on Rails framework
 www-apps/rocket-chat 0.31.0: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
-www-apps/snipe-it 1.1 1.2.5 1.2.6.1: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
+www-apps/snipe-it 1.2.5 1.2.6.1 2.1.2: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
