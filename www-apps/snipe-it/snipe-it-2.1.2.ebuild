@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/www-apps/ampache/ampache-3.5.4.ebuild,v 1.2 2012/06/22 21:24:02 mabi Exp $
 
-EAPI="2"
+EAPI="5"
 
 inherit webapp git-2 depend.php
 
@@ -14,41 +14,39 @@ EGIT_REPO_URI="https://github.com/snipe/snipe-it.git"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE=""
+IUSE="+ldap"
 
-RDEPEND=">=dev-lang/php-5.4[fileinfo,gd,sqlite]
-	dev-libs/libmcrypt
-	dev-php/pecl-imagick"
+RDEPEND=">=dev-lang/php-5.4[crypt,fileinfo,pdo,mysql,unicode,curl,gd,ldap?]
+		dev-php/pecl-imagick"
 DEPEND="dev-php/composer"
 
 need_php_httpd
 
 pkg_pretend() {
-    # Check for Github API token
-    if [[ -n "$GITHUB_API_TOKEN" ]] ; then
-        einfo "Using Github API token \"$GITHUB_API_TOKEN\" from environment variable GITHUB_API_TOKEN ..."
-    else
-        eerror "Please specify a Github API key in GITHUB_API_TOKEN environment"
-        eerror "variable to avoid exhausting the Github API limit when installing"
-        eerror "vendor files using PHP's composer."
-        eerror "You can get your Github API token using: "
-        eerror "$ curl -u \"yourgithubname\" https://api.github.com/authorizations."
-    
-        die "Please specify a Github API key in GITHUB_API_TOKEN environment variable!"
-    fi  
-}
-
-pkg_setup() {
-	webapp_pkg_setup
+	# Check for Github API token
+	if [[ -n "$GITHUB_API_TOKEN" ]] ; then
+		einfo "Using Github API token \"$GITHUB_API_TOKEN\" from environment variable GITHUB_API_TOKEN ..."
+	else
+		eerror "Please specify a Github API key in GITHUB_API_TOKEN environment"
+		eerror "variable to avoid exhausting the Github API limit when installing"
+		eerror "vendor files using PHP's composer."
+		eerror "You can manage your Github API tokens here: "
+		eerror "https://github.com/settings/tokens"
+		die "Please specify a Github API key in GITHUB_API_TOKEN environment variable!"
+	fi
 }
 
 src_prepare() {
+
+	# Fix composer lock
+	#sed -s 's/\^1.0.2/~1.0.2/g' -i composer.lock
+	#sed -s 's#https://api.github.com/repos/d11wtq/boris/zipball/125dd4e5752639af7678a22ea597115646d89c6e#https://github.com/borisrepl/boris/archive/v1.0.8.zip#g' -i composer.lock
 
     # Composer might create this
     addpredict /var/lib/net-snmp/mib_indexes
 
     # Add Github API token to composer file
-	composer config -g github-oauth.github.com $GITHUB_API_TOKEN
+	composer config -g github-oauth.github.com "$GITHUB_API_TOKEN"
 
 	einfo "Running composer  ..."
 	composer install
