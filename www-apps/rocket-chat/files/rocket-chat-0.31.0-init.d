@@ -16,6 +16,10 @@ start_stop_daemon_args="-u ${ROCKET_USER:=rocket} \
 			-e \"MAIL_URL=${ROCKET_MAIL_URL}\" \
 			-b -m -p ${ROCKET_PID:-/run/rocket-chat.pid}"
 
+start_pre() {
+    checkpath -d -m 0700 -o "${ROCKET_USER}":"${ROCKET_GROUP}" "/tmp/ufs"
+}
+
 depend() {
 	need net
 }
