@@ -38,7 +38,7 @@ src_unpack() {
 }
 
 src_compile() {
-	export GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
+	export GOPATH="${WORKDIR}/${P}"
 	emake build
 }
 
@@ -46,13 +46,13 @@ src_install() {
 	dobin "${PN}"
 	dobin "promtool"
 
-	insinto "/etc/"
+	insinto "/etc/prometheus/"
 	doins "documentation/examples/prometheus.yml"
 
 	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
 
-    keepdir "${LOG_DIR}"
+	keepdir "${LOG_DIR}"
 	fowners "${DAEMON_USER}" "${LOG_DIR}"
 
 	keepdir "${DATA_DIR}"
