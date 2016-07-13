@@ -12,8 +12,8 @@ ETHERPAD_NODE=${ETHERPAD_NODE:=/usr/local/bin/node}
 ETHERPAD_LOG=${ETHERPAD_LOG:=/var/log/etherpad-lite}
 
 start_pre() {
-	checkpath -f -m 0600 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/SESSIONKEY.txt"
-	checkpath -f -m 0600 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/APIKEY.txt"
+	checkpath -f -m 0400 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/SESSIONKEY.txt"
+	checkpath -f -m 0400 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/APIKEY.txt"
 	checkpath -d -m 0700 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/var"
 }
 
