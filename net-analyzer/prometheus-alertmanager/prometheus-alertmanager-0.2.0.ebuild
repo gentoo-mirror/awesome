@@ -9,7 +9,7 @@ inherit golang-base user
 DESCRIPTION="The Prometheus monitoring system and time series database"
 HOMEPAGE="http://prometheus.io"
 EGO_PN="github.com/prometheus/alertmanager"
-SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -32,13 +32,18 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	mkdir -p temp/src/${EGO_PN%/*} || die
-	mv alertmanager-${PV} temp/src/${EGO_PN} || die
-	mv temp ${P} || die
+	mkdir -p ${P}/src/${EGO_PN%/*} || die
+	mv alertmanager-${PV} ${P}/src/${EGO_PN} || die
 }
 
 src_compile() {
-	export GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
+	export GOPATH="${WORKDIR}/${P}"
+	export PREFIX="${S}/alertmanager"
+	cd ${S}
+	#einfo "GOPATH: $(export | grep -i gopath)"
+	#einfo "GOROOT: $(export | grep -i goroot)"
+	#einfo "Go Version: $(go version)"
+	#einfo "PWD: $(pwd)"
 	emake build
 }
 
