@@ -9,5 +9,5 @@ RDEPEND=>=net-libs/nodejs-0.10.40 dev-db/mongodb
 SLOT=0
 SRC_URI=https://rocket.chat/releases/0.31.0/download -> rocket-chat-0.31.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_install:-
-_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
 _md5_=04805e7c5381c176b8df61860d936318
