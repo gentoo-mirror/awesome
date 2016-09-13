@@ -15,12 +15,13 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
-IUSE=""
+IUSE="hardened"
 
 DEPEND="
 	>=dev-lang/go-1.5
 	>=net-libs/nodejs-0.12
-	!www-apps/grafana-plugins-prometheus"
+	!www-apps/grafana-plugins-prometheus
+	hardened? ( sys-apps/paxctl )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
@@ -47,10 +48,14 @@ src_compile() {
 }
 
 src_install() {
-
 	insinto /usr/share/${PN}
-	doins -r public conf vendor
+	doins -r conf vendor
 
+	insinto /usr/share/${PN}/public
+	doins -r public_gen/*
+
+	# Disable MPROTECT to run in hardened kernels
+	use hardened && paxctl -m bin/grafana-server
 	dobin bin/grafana-server
 
 	newconfd "${FILESDIR}"/grafana.confd grafana
