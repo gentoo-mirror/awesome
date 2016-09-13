@@ -1,12 +1,14 @@
-DEFINED_PHASES=install setup unpack
+DEFINED_PHASES=compile install setup unpack
+DEPEND=>=dev-lang/go-1.5 >=net-libs/nodejs-0.12 !www-apps/grafana-plugins-prometheus >=dev-lang/go-1.4.2:=
 DESCRIPTION=Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 EAPI=5
 HOMEPAGE=http://grafana.org
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=>=net-libs/nodejs-0.12 >=dev-lang/go-1.4 !www-apps/grafana-plugins-prometheus
+RDEPEND=>=dev-lang/go-1.5 >=net-libs/nodejs-0.12 !www-apps/grafana-plugins-prometheus
+RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/grafana/grafana/archive/v3.1.1.tar.gz
-_eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
-_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=4ff0637a35084fda7b035bc6a21d007f
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_compile:- src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=76d226176273609fb0e54239a7824b82
