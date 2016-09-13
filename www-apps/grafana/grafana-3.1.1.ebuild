@@ -4,36 +4,50 @@
 
 EAPI=5
 
-inherit user
+inherit golang-base user
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="http://grafana.org"
-SRC_URI="https://github.com/grafana/grafana/archive/v${PV}.tar.gz"
+EGO_PN="github.com/${PN}/${PN}"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
+DEPEND="
+	>=dev-lang/go-1.5
 	>=net-libs/nodejs-0.12
-	>=dev-lang/go-1.4
 	!www-apps/grafana-plugins-prometheus"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${P}/src/${EGO_PN}"
+
+DAEMON_USER="grafana"
+LOG_DIR="/var/log/grafana"
+DATA_DIR="/var/lib/grafana"
 
 pkg_setup() {
-	enewgroup grafana
-	enewuser grafana -1 -1 /usr/share/grafana grafana
+	enewuser ${DAEMON_USER} -1 -1 "${DATA_DIR}"
 }
 
 src_unpack() {
 	default
-	mv "${P}-${BUILD}" "${P}"
+	mkdir -p temp/src/${EGO_PN%/*} || die
+	mv ${P} temp/src/${EGO_PN} || die
+	mv temp ${P} || die
+}
+
+src_compile() {
+	export GOPATH="${WORKDIR}/${P}"
+	export PATH="$PATH:${WORKDIR}/${P}/bin"
+	emake
 }
 
 src_install() {
 
-	# Frontend assets
 	insinto /usr/share/${PN}
 	doins -r public conf vendor
 
@@ -46,7 +60,11 @@ src_install() {
 	insinto /etc/grafana
 	doins "${FILESDIR}"/grafana.ini
 
-	keepdir /var/{lib,log}/grafana
-	fowners grafana:grafana /var/{lib,log}/grafana
-	fperms 0750 /var/{lib,log}/grafana
+    keepdir "${LOG_DIR}"
+	fowners "${DAEMON_USER}" "${LOG_DIR}"
+	fperms 0750 "${LOG_DIR}"
+
+	keepdir "${DATA_DIR}"
+	fowners "${DAEMON_USER}" "${DATA_DIR}"
+	fperms 0750 "${DATA_DIR}"
 }
