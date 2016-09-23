@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-command="/usr/local/bin/node"
+command="/usr/bin/node"
 command_args="/usr/share/rocket-chat/main.js"
 start_stop_daemon_args="-u ${ROCKET_USER:=rocket} \
 			-g ${ROCKET_GROUP:=daemon} \

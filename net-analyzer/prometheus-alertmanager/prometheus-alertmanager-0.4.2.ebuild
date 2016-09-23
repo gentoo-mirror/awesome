@@ -9,7 +9,7 @@ inherit golang-base user
 DESCRIPTION="The Prometheus monitoring system and time series database"
 HOMEPAGE="http://prometheus.io"
 EGO_PN="github.com/prometheus/alertmanager"
-SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

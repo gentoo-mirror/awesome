@@ -48,13 +48,9 @@ src_install()
 	mkdir -p "${D}${ROCKET_DEST}"
 	cp -a . "${D}${ROCKET_DEST}"
 
-	#insinto "/etc"
-	#newins "${FILESDIR}/${P}-config.json" "${PN}.json"
-	#dosym "/etc/${PN}.json" "${ROCKET_DEST}/pm2-rocket-chat.json"
-
 	keepdir "${ROCKET_LOG}"
 	fowners "${ROCKET_USER}:${ROCKET_GROUP}" "${ROCKET_LOG}"
 
-	newconfd "${FILESDIR}/${P}-conf.d" "rocket-chat"
-	newinitd "${FILESDIR}/${P}-init.d" "rocket-chat"
+	newconfd "${FILESDIR}/${PN}-conf.d" "rocket-chat"
+	newinitd "${FILESDIR}/${PN}-init.d" "rocket-chat"
 }
