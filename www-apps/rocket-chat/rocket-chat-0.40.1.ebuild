@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=net-libs/nodejs-0.10.40
-		dev-db/mongodb"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-db/mongodb
+		>=net-libs/nodejs-4.5.0"
+DEPEND="${RDEPEND}"
 
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
