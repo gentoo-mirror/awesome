@@ -15,7 +15,7 @@ www-apps/grafana 3.1.0 3.1.1: Gorgeous metric viz, dashboards & editors for Grap
 www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
-www-apps/piwik 2.16.2 2.16.3 2.16.4: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
+www-apps/piwik 2.16.3 2.16.4 2.16.5: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
 www-apps/pydio 6.0.6 6.0.7 6.0.8 6.2.0: File sharing platform similar to dropbox
 www-apps/redmine 2.4.5-r1 2.5.2 3.0.3: Redmine is a flexible project management web application written using Ruby on Rails framework
 www-apps/rocket-chat 0.40.1 0.41.0 0.42.0: The ultimate open source web chat platform
