@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-db/mongodb
-		>=net-libs/nodejs-4.5.0"
+		 >=net-libs/nodejs-4.5.0"
 DEPEND="${RDEPEND}"
 
 ROCKET_DEST="/usr/share/${PN}"
