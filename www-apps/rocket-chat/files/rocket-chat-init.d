@@ -17,6 +17,14 @@ start_stop_daemon_args="-u ${ROCKET_USER:=rocket} \
 			-b -m -p ${ROCKET_PID:-/run/rocket-chat.pid}"
 
 start_pre() {
+    
+    # For a restart, give the node process some time
+    # to properly terminate.
+    if [ "$RC_CMD" = restart ]; then
+	sleep 1 
+    fi
+
+
     checkpath -d -m 0700 -o "${ROCKET_USER}":"${ROCKET_GROUP}" "/tmp/ufs"
 }
 
