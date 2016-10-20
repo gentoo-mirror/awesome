@@ -8,7 +8,7 @@ ETHERPAD_GROUP=${ETHERPAD_GROUP:=daemon}
 ETHERPAD_PATH=${ETHERPAD_PATH:=/usr/share/etherpad-lite}
 ETHERPAD_PID=${ETHERPAD_PID:-/run/etherpad-lite.pid}
 ETHERPAD_DAEMON_NAME=${ETHERPAD_DAEMON_NAME:=etherpad-lite}
-ETHERPAD_NODE=${ETHERPAD_NODE:=/usr/local/bin/node}
+ETHERPAD_NODE=${ETHERPAD_NODE:=/usr/bin/node}
 ETHERPAD_LOG=${ETHERPAD_LOG:=/var/log/etherpad-lite}
 
 start_pre() {
