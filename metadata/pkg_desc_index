@@ -18,6 +18,6 @@ www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management 
 www-apps/piwik 2.16.3 2.16.4 2.16.5: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
 www-apps/pydio 6.0.6 6.0.7 6.0.8 6.2.0: File sharing platform similar to dropbox
 www-apps/redmine 2.4.5-r1 2.5.2 3.0.3: Redmine is a flexible project management web application written using Ruby on Rails framework
-www-apps/rocket-chat 0.41.0 0.42.0 0.43.0: The ultimate open source web chat platform
+www-apps/rocket-chat 0.42.0 0.43.0 0.44.0: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
 www-apps/snipe-it 1.2.5 1.2.6.1 2.1.2 3.0: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
