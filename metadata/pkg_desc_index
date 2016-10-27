@@ -12,7 +12,6 @@ net-im/ejabberd 15.10: The Erlang Jabber Daemon
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
 www-apps/etherpad-lite 1.6.0: A really-real time collaborative word processor for the web
 www-apps/grafana 3.1.0 3.1.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
-www-apps/icingaweb2 2.0.0_beta3: Icinga Web 2 - Newest Frontend for icinga2
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
 www-apps/piwik 2.16.3 2.16.4 2.16.5: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
