@@ -12,6 +12,10 @@ command_background="true"
 
 start_stop_daemon_args="-u ${PROMETHEUS_USER} -1 ${PROMETHEUS_LOG_FILE} -2 ${PROMETHEUS_LOG_FILE}"
 
+start_pre() {
+    checkpath -d --owner "${PROMETHEUS_USER}" "${PROMETHEUS_STORAGE}"
+}
+
 depend() {
 	need net
 }
