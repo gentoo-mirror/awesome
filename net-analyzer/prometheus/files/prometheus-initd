@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
@@ -11,6 +11,10 @@ command_args="${PROMETHEUS_ARGS}"
 command_background="true"
 
 start_stop_daemon_args="-u ${PROMETHEUS_USER} -1 ${PROMETHEUS_LOG_FILE} -2 ${PROMETHEUS_LOG_FILE}"
+
+start_pre() {
+    checkpath -d --owner "${PROMETHEUS_USER}" "${PROMETHEUS_STORAGE}"
+}
 
 depend() {
 	need net
