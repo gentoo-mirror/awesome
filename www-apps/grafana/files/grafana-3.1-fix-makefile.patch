@@ -1,0 +1,10 @@
+--- Makefile.orig	2016-11-07 15:46:42.344000000 +0100
++++ Makefile	2016-11-07 15:46:46.355000000 +0100
+@@ -2,7 +2,6 @@
+ 
+ deps:
+ 	go run build.go setup
+-	godep restore
+ 	npm install
+ 
+ build:
