@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit golang-base user
+inherit golang-base user eutils versionator
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="http://grafana.org"
@@ -40,6 +40,13 @@ src_unpack() {
 	mv ${P} temp/src/${EGO_PN} || die
 	mv temp ${P} || die
 }
+
+src_prepare() {
+	for grafana_patch in $(find ${FILESDIR} -iname "${PN}-$(get_version_component_range 1-2)-*.patch") ; do
+		epatch "${grafana_patch}"
+	done
+}
+
 
 src_compile() {
 	export GOPATH="${WORKDIR}/${P}"
