@@ -8,7 +8,7 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/go-1.5
 RESTRICT=mirror
 SLOT=0
-SRC_URI=https://github.com/prometheus/alertmanager/archive/v0.4.0.tar.gz -> prometheus-alertmanager-0.4.0.tar.gz
+SRC_URI=https://github.com/prometheus/prometheus/archive/v1.3.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_compile:- src_install:-
 _eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=db03a68beab6a74fcf7262c4e3a13392
+_md5_=94be6da8b1d9dfbf0af3d2e364ea02f3

@@ -7,7 +7,7 @@ KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND=dev-db/mongodb >=net-libs/nodejs-4.5.0
 SLOT=0
-SRC_URI=https://rocket.chat/releases/0.42.0/download -> rocket-chat-0.42.0.tar.gz
+SRC_URI=https://rocket.chat/releases/0.45.0/download -> rocket-chat-0.45.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=6c0820b5f0a314c83de9a38ac4608484
+_md5_=48410f7ed2eaa6c6f146dc9100d0c8c1
