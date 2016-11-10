@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-db/mongodb
-		>=net-libs/nodejs-4.5.0"
+		 >=net-libs/nodejs-4.5.0"
 DEPEND="${RDEPEND}"
 
 ROCKET_DEST="/usr/share/${PN}"
@@ -50,6 +50,10 @@ src_install()
 
 	keepdir "${ROCKET_LOG}"
 	fowners "${ROCKET_USER}:${ROCKET_GROUP}" "${ROCKET_LOG}"
+
+	# This is to enable webhook integration with script support
+	keepdir "${ROCKET_DEST}/.babel-cache"
+	fowners "${ROCKET_USER}:${ROCKET_GROUP}" "${ROCKET_DEST}/.babel-cache"
 
 	newconfd "${FILESDIR}/${PN}-conf.d" "rocket-chat"
 	newinitd "${FILESDIR}/${PN}-init.d" "rocket-chat"
