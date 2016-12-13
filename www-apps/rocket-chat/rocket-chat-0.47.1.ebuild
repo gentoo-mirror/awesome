@@ -8,7 +8,7 @@ inherit user
 
 DESCRIPTION="The ultimate open source web chat platform"
 HOMEPAGE="https://rocket.chat/"
-SRC_URI="https://github.com/RocketChat/Rocket.Chat/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://rocket.chat/releases/${PV}/download -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
