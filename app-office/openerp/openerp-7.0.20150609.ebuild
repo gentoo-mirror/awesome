@@ -22,7 +22,7 @@ CDEPEND="postgres? ( dev-db/postgresql[server] )
 	dev-python/lxml
 	dev-python/psycopg:2
 	dev-python/pychart
-	virtual/python-imaging[jpeg]
+	dev-python/pillow[jpeg]
 	dev-python/reportlab
 	media-gfx/pydot
 	dev-python/vobject
