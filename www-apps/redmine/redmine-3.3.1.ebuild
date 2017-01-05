@@ -186,8 +186,9 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Upgrading the plugin migrations."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:plugins:migrate || die
-		einfo "Clear the cache and the existing sessions."
+		einfo "Clear the cache."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake tmp:cache:clear || die
+		einfo "Clear existing sessions."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake tmp:sessions:clear || die
 	else
 		einfo
@@ -207,9 +208,5 @@ pkg_config() {
 		einfo "# cd \"${EPREFIX}${REDMINE_DIR}\""
 		einfo "# chown redmine:redmine db/ db/*.sqlite3"
 		einfo
-	fi
-
-	if use backlog ; then
-		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:backlogs:install
 	fi
 }
