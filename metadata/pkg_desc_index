@@ -14,7 +14,7 @@ www-apps/etherpad-lite 1.6.0 1.6.1: A really-real time collaborative word proces
 www-apps/grafana 3.1.0 3.1.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
-www-apps/piwik 3.0.0: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
+www-apps/piwik 3.0.1: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
 www-apps/pydio 6.0.6 6.0.7 6.0.8 6.2.0: File sharing platform similar to dropbox
 www-apps/redmine 3.2.5 3.3.2: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocket-chat 0.46.0 0.47.1 0.48.2: The ultimate open source web chat platform
