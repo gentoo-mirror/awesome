@@ -15,6 +15,8 @@ start_pre() {
 	checkpath -f -m 0400 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/SESSIONKEY.txt"
 	checkpath -f -m 0400 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/APIKEY.txt"
 	checkpath -d -m 0700 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/var"
+	checkpath -d -m 0700 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/node_modules"
+	checkpath -d -m 0700 -o "${ETHERPAD_USER}":"${ETHERPAD_GROUP}" "${ETHERPAD_PATH}/src/node_modules"
 }
 
 start(){
