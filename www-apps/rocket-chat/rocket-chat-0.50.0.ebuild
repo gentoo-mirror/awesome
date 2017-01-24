@@ -16,7 +16,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-db/mongodb
-		 >=net-libs/nodejs-4.5.0"
+		 >=net-libs/nodejs-6.9.1
+		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
 ROCKET_DEST="/usr/share/${PN}"
