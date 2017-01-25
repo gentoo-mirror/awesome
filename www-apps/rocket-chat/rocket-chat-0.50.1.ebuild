@@ -42,7 +42,6 @@ src_prepare()
 	default
 	pushd "programs/server"
 	npm install node-pre-gyp	
-	#PATH="$PATH:$(pwd)/node-module/.bin" 
 	npm install || die "Error in npm install"
 	popd
 }
