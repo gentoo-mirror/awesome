@@ -16,7 +16,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-db/mongodb
-		 >=net-libs/nodejs-6.9.1
+		 >=net-libs/nodejs-4.0.0
+		 <net-libs/nodejs-5.0.0
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
@@ -40,7 +41,7 @@ src_prepare()
 {
 	default
 	pushd "programs/server"
-	npm install || die "Error in npm install"
+	npm --unsafe-perm install || die "Error in npm install"
 	popd
 }
 
