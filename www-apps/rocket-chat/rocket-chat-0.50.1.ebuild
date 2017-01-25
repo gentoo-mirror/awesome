@@ -41,7 +41,8 @@ src_prepare()
 {
 	default
 	pushd "programs/server"
-	npm --unsafe-perm install || die "Error in npm install"
+	npm install node-pre-gyp	
+	npm install || die "Error in npm install"
 	popd
 }
 
