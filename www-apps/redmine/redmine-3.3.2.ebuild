@@ -1,33 +1,42 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/redmine-2.4.5.ebuild,v 1.1 2014/06/01 18:11:37 pva Exp $
+# $Id$
 
 EAPI="5"
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20 ruby21 ruby22"
 inherit eutils depend.apache ruby-ng user
 
-DESCRIPTION="Redmine is a flexible project management web application written using Ruby on Rails framework"
+DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
 HOMEPAGE="http://www.redmine.org/"
 SRC_URI="http://www.redmine.org/releases/${P}.tar.gz"
-
-BACKLOG_GIT_REPO_URI="https://github.com/backlogs/redmine_backlogs.git"
-BACKLOG_GIT_COMMIT="v1.0.6"
-
-RECURRING_TASKS_GIT_REPO_URI="https://github.com/nutso/redmine-plugin-recurring-tasks.git"
-RECURRING_TASKS_GIT_COMMIT="v.1.3.0"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+ldap +imagemagick passenger backlog recurring-tasks postgres sqlite +mysql"
+IUSE="ldap fastcgi passenger imagemagick postgres sqlite mysql"
 
 ruby_add_rdepend "
-	passenger? ( || ( www-apache/passenger www-servers/nginx[nginx_modules_http_passenger] ) )
-	"
-DEPEND="
-	dev-ruby/bundler
-	imagemagick? ( media-gfx/imagemagick )
-	"
+	dev-ruby/rubygems
+	>=dev-ruby/rails-4.2.5.2:4.2
+	>=dev-ruby/jquery-rails-3.1.4:3
+	>=dev-ruby/coderay-1.1.0
+	>=dev-ruby/builder-3.0.4:3
+	>=dev-ruby/roadie-rails-1.1.0
+	dev-ruby/mime-types:*
+	=dev-ruby/request_store-1.0.5
+	>=dev-ruby/rbpdf-1.19.0
+	dev-ruby/actionpack-action_caching
+	dev-ruby/actionpack-xml_parser
+	dev-ruby/protected_attributes
+	>=dev-ruby/redcarpet-3.3.2
+	>=dev-ruby/nokogiri-1.6.7.2
+	ldap? ( >=dev-ruby/ruby-net-ldap-0.12.0 )
+	>=dev-ruby/ruby-openid-2.3.0
+	>=dev-ruby/rack-openid-0.2.1
+	fastcgi? ( dev-ruby/fcgi )
+	passenger? ( www-apache/passenger )
+	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )"
+
 REDMINE_DIR="/var/lib/${PN}"
 
 pkg_setup() {
@@ -41,35 +50,20 @@ all_ruby_prepare() {
 	# bug #406605
 	rm .gitignore .hgignore || die
 
-	rm config/preinitializer.rb || die
-
 	echo "CONFIG_PROTECT=\"${EPREFIX}${REDMINE_DIR}/config\"" > "${T}/50${PN}"
 	echo "CONFIG_PROTECT_MASK=\"${EPREFIX}${REDMINE_DIR}/config/locales ${EPREFIX}${REDMINE_DIR}/config/settings.yml\"" >> "${T}/50${PN}"
 
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	if use backlog ; then
-		pushd plugins
-		git clone ${BACKLOG_GIT_REPO_URI} redmine_backlogs
-		cd redmine_backlogs
-		git checkout ${BACKLOG_GIT_COMMIT}
+	# Make it work
+	sed -i -e "1irequire 'request_store'" app/controllers/application_controller.rb || die
+	sed -i -e "18irequire 'action_controller'" -e "19irequire 'action_controller/action_caching'"\
+		app/controllers/welcome_controller.rb || die
+	sed -i -e "4irequire 'action_dispatch/xml_params_parser'" -e "/Bundler/d" config/application.rb || die
+	sed -i -e "18irequire 'protected_attributes'" app/models/custom_field.rb || die
+	sed -i -e "19irequire 'roadie-rails'" app/models/mailer.rb || die
 
-		# Set fixed icalendar version to be compatible with i.e.
-		# https://github.com/buschmais/redmics/blob/master/Gemfile
-		sed -s 's#gem "icalendar"#gem "icalendar", ">=1.1.6", "<=1.5.3"#' -i Gemfile
-
-		popd
-	fi
-	
-	if use recurring-tasks ; then
-		pushd plugins
-		git clone ${RECURRING_TASKS_GIT_REPO_URI} recurring_tasks
-		cd recurring_tasks
-		git checkout ${RECURRING_TASKS_GIT_COMMIT}
-		popd
-	fi
-	
 	# Enable database adapter
 	cp config/database.yml.example config/database.yml
 	if use postgres ; then
@@ -77,18 +71,19 @@ all_ruby_prepare() {
 	elif use sqlite ; then
 		sed -s 's/mysql2/sqlite3/g' -i config/database.yml
 	fi # mysql is enable by default
-	
+
 	# Run bundler to install dependencies
 	local without="development test"
     local flag; for flag in imagemagick; do
         without+="$(use $flag || echo ' '$flag)"
     done
+
     # Deployment requires a valid Gemfile.lock which is not available from upstream
     #local bundle_args="--deployment ${without:+--without ${without}}"
-    local bundle_args="--path vendor/bundle ${without:+--without ${without}}"
-	
+    local bundle_args="--path vendor/bundle ${without:+--without=\"${without}\"}"
+
 	einfo "Running bundle install ${bundle_args} in ..."
-	/usr/bin/bundle install ${bundle_args} || die "bundler failed"	
+	/usr/bin/bundle install ${bundle_args} || die "bundler failed"
 }
 
 all_ruby_install() {
@@ -171,7 +166,7 @@ pkg_config() {
 		eerror "Please update it via 'eselect ruby'"
 		die
 	fi
-	local RUBY=${RUBY:-ruby}
+	local RUBY=${RUBY:-bundle exec ruby}
 
 	cd "${EPREFIX}${REDMINE_DIR}" || die
 	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/session_store.rb" ]; then
@@ -182,17 +177,18 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 	fi
 	if [ -e "${EPREFIX}${REDMINE_DIR}/config/initializers/secret_token.rb" ]; then
-		einfo 
+		einfo
 		einfo "Upgrading database."
 		einfo
 
 		einfo "Migrating database."
-		einfo 
+		einfo
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Upgrading the plugin migrations."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:plugins:migrate || die
-		einfo "Clear the cache and the existing sessions."
+		einfo "Clear the cache."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake tmp:cache:clear || die
+		einfo "Clear existing sessions."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake tmp:sessions:clear || die
 	else
 		einfo
@@ -200,7 +196,7 @@ pkg_config() {
 		einfo
 
 		einfo "Generating a session store secret."
-		${RUBY} -S rake generate_secret_token || die
+		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 		einfo "Creating the database structure."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
@@ -212,9 +208,5 @@ pkg_config() {
 		einfo "# cd \"${EPREFIX}${REDMINE_DIR}\""
 		einfo "# chown redmine:redmine db/ db/*.sqlite3"
 		einfo
-	fi
-
-	if use backlog ; then
-		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:backlogs:install
 	fi
 }

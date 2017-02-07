@@ -16,7 +16,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-db/mongodb
-		 >=net-libs/nodejs-4.5.0"
+		 >=net-libs/nodejs-4.0.0
+		 <net-libs/nodejs-5.0.0
+		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
 ROCKET_DEST="/usr/share/${PN}"
@@ -39,6 +41,7 @@ src_prepare()
 {
 	default
 	pushd "programs/server"
+	npm install node-pre-gyp	
 	npm install || die "Error in npm install"
 	popd
 }
