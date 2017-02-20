@@ -1,7 +1,5 @@
 app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
 app-emulation/aws-cli 1.10.26: Universal Command Line Interface for Amazon Web Services
-app-office/odoo 8.0.20150609: Open Source ERP & CRM
-app-office/openerp 7.0.20150609: Open Source ERP & CRM
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-php/composer 1.0.0_alpha8 1.1.2: Dependency Manager for PHP
 dev-python/s3transfer 0.0.1: An Amazon S3 Transfer Manager for Python
