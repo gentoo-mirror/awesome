@@ -38,7 +38,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-Makefile.patch"
+	epatch "${FILESDIR}/${PN}-Makefile.patch"
 }
 
 src_compile() {

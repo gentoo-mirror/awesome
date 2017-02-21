@@ -9,8 +9,7 @@ inherit golang-base user eutils
 DESCRIPTION="Prometheus exporter for machine metrics."
 HOMEPAGE="http://prometheus.io"
 EGO_PN="github.com/prometheus/node_exporter"
-SRC_URI="https://${EGO_PN}/releases/download/v${PV}/node_exporter-${PV}.linux-amd64.tar.gz
-		 x86? ( https://${EGO_PN}/releases/download/v${PV}/node_exporter-${PV}.linux-386.tar.gz )"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -39,7 +38,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-Makefile.patch"
+	epatch "${FILESDIR}/${PN}-Makefile.patch"
 }
 
 src_compile() {
