@@ -3,7 +3,7 @@
 # $Header:
 EAPI=2
 
-inherit webapp depend.php
+inherit webapp
 
 DESCRIPTION="Piwik is a downloadable, open source (GPL licensed) real time web analytics software program."
 HOMEPAGE="http://www.piwik.org/"
@@ -14,10 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-lang/php[pdo,ctype,xml] || ( <dev-lang/php-5.3[spl,reflection] >=dev-lang/php-5.3 )"
-
-need_httpd_cgi
-need_php_httpd
+RDEPEND="dev-lang/php[pdo,ctype,xml] || ( <dev-lang/php-5.3[spl,reflection] >=dev-lang/php-5.3 )
+		 virtual/httpd-php"
 
 pkg_setup() {
 	webapp_pkg_setup

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit webapp depend.php
+inherit webapp
 
 DESCRIPTION="OrangeHRM is an Open Source Human Resource Management System"
 HOMEPAGE="http://orangehrm.sourceforge.net"
@@ -19,9 +19,6 @@ DEPEND=""
 RDEPEND="virtual/mysql
 		virtual/httpd-php
 		dev-lang/php[mysqli,mysql,pdo]"
-
-need_httpd_cgi
-need_php_httpd
 
 pkg_setup() {
 	webapp_pkg_setup

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit webapp depend.php
+inherit webapp
 
 DESCRIPTION="File sharing platform similar to dropbox"
 HOMEPAGE="https://pyd.io/"
@@ -15,10 +15,9 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="+webdav"
 
-DEPEND="webdav? ( dev-php/PEAR-HTTP_WebDAV_Client )"
+DEPEND="webdav? ( dev-php/PEAR-HTTP_WebDAV_Client )
+		virtual/httpd-php"
 RDEPEND="${DEPEND}"
-
-need_php_httpd
 
 S="${WORKDIR}/${PN}-core-${PV}"
 
