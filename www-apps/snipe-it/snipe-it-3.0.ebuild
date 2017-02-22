@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit webapp git-2 depend.php
+inherit webapp git-2
 
 DESCRIPTION="A free open source IT asset/license management system built in PHP on Laravel and Bootstrap."
 HOMEPAGE="http://snipeitapp.com"
@@ -17,10 +17,9 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="+ldap"
 
 RDEPEND=">=dev-lang/php-5.4[crypt,fileinfo,pdo,mysql,unicode,curl,gd,ldap?]
-		dev-php/pecl-imagick"
+		dev-php/pecl-imagick
+		virtual/httpd-php"
 DEPEND="dev-php/composer"
-
-need_php_httpd
 
 pkg_pretend() {
 	# Check for Github API token

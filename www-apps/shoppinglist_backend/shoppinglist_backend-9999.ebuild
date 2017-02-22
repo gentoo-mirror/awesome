@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-2 webapp depend.php
+inherit git-2 webapp
 
 DESCRIPTION="Backend for a Android based app called ShoppingList"
 HOMEPAGE="https://github.com/GroundApps/ShoppingList_backend"
@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-need_php_httpd
+RDEPEND="virtual/httpd-php"
 
 src_install() {
     webapp_src_preinst
