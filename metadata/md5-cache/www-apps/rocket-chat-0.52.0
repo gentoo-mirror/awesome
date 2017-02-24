@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://rocket.chat/releases/0.52.0/download -> rocket-chat-0.52.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_install:-
 _eclasses_=user	e10ccb95af96d45f86016fa982a949bb
-_md5_=9e5e38b39561732d54a340a3ded8a954
+_md5_=399508162b203255dc43162c4114ce07
