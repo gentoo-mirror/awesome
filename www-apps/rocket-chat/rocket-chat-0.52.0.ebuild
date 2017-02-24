@@ -20,6 +20,7 @@ RDEPEND="dev-db/mongodb
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
+NODEJS_VERSION="4.6.1"
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
 ROCKET_USER="rocket"
@@ -41,8 +42,8 @@ src_prepare()
 	default
 	npm install n &>/dev/null || die "Error installing n"
 	N_PREFIX="${WORKDIR}/${P}/node"
-	elog "Installing latest lts node in $N_PREFIX ..."
-	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q 4.6.1 &>/dev/null || die "Error installing latest lts node"
+	elog "Installing node v${NODEJS_VERSION} in $N_PREFIX ..."
+	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || die "Error installing node v${NODEJS_VERSION}"
 	PATH=$N_PREFIX/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
 	pushd "programs/server" &>/dev/null
