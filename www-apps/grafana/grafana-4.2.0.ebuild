@@ -18,7 +18,7 @@ RESTRICT="mirror"
 IUSE="hardened"
 
 DEPEND="
-	>=dev-lang/go-1.5
+	>=dev-lang/go-1.8
 	>=net-libs/nodejs-0.12
 	!www-apps/grafana-plugins-prometheus
 	sys-apps/yarn
