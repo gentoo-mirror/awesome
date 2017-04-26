@@ -48,7 +48,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin "alertmanager" "${PN}"
+	newbin "alertmanager/alertmanager" "${PN}"
 	
     insinto "/etc/prometheus"
     newins "${FILESDIR}/${PN}.yaml" "alertmanager.yaml"
