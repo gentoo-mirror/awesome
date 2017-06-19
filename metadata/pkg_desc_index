@@ -3,13 +3,12 @@ app-emulation/aws-cli 1.10.26: Universal Command Line Interface for Amazon Web S
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-php/composer 1.0.0_alpha8 1.1.2: Dependency Manager for PHP
 dev-python/s3transfer 0.0.1: An Amazon S3 Transfer Manager for Python
-net-analyzer/prometheus 1.4.1 1.5.2: The Prometheus monitoring system and time series database
+net-analyzer/prometheus 1.4.1 1.5.2 1.6.1: The Prometheus monitoring system and time series database
 net-analyzer/prometheus-alertmanager 0.6.0 0.6.2 0.7.1: The Prometheus monitoring system and time series database
 net-analyzer/prometheus-node-exporter 0.13.0 0.14.0: Prometheus exporter for machine metrics.
 net-im/ejabberd 15.10: The Erlang Jabber Daemon
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
 www-apps/etherpad-lite 1.6.0 1.6.1: A really-real time collaborative word processor for the web
-www-apps/grafana 3.1.0 3.1.1 4.2.0: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/mediagoblin 0.7.1: A federated, autonomous-style platform to host various forms of media
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
 www-apps/piwik 3.0.2 3.0.3 3.0.4: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
