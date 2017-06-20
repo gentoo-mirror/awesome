@@ -49,8 +49,8 @@ src_install() {
 	insinto "/etc/prometheus/"
 	doins "documentation/examples/prometheus.yml"
 
-	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	keepdir "${LOG_DIR}"
 	fowners "${DAEMON_USER}" "${LOG_DIR}"
