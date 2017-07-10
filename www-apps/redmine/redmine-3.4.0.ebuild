@@ -25,7 +25,7 @@ ruby_add_rdepend "
 	dev-ruby/mime-types:*
 	=dev-ruby/request_store-1.0.5
 	>=dev-ruby/rbpdf-1.19.0
-	dev-ruby/actionpack-action_caching
+	>=dev-ruby/actionpack-action_caching-1.2.0
 	dev-ruby/actionpack-xml_parser
 	dev-ruby/protected_attributes
 	>=dev-ruby/redcarpet-3.3.2
@@ -58,8 +58,6 @@ all_ruby_prepare() {
 
 	# Make it work
 	sed -i -e "1irequire 'request_store'" app/controllers/application_controller.rb || die
-	sed -i -e "18irequire 'action_controller'" -e "19irequire 'action_controller/action_caching'"\
-		app/controllers/welcome_controller.rb || die
 	sed -i -e "4irequire 'action_dispatch/xml_params_parser'" -e "/Bundler/d" config/application.rb || die
 	sed -i -e "18irequire 'protected_attributes'" app/models/custom_field.rb || die
 	sed -i -e "19irequire 'roadie-rails'" app/models/mailer.rb || die
