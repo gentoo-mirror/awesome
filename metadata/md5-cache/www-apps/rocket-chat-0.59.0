@@ -9,4 +9,4 @@ RDEPEND=dev-db/mongodb net-libs/nodejs media-gfx/imagemagick[jpeg,png]
 SLOT=0
 SRC_URI=https://github.com/RocketChat/Rocket.Chat/archive/0.59.0.tar.gz -> rocket-chat-0.59.0.tar.gz
 _eclasses_=user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=680118cf84f2e10b6e7be16aa7d3a7e3
+_md5_=8c4f2ca2c70f1e56746217ea509dd91a
