@@ -19,7 +19,7 @@ RDEPEND="dev-db/mongodb
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
-NODEJS_VERSION="4.6.1"
+NODEJS_VERSION="4.8.4"
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
 ROCKET_USER="rocket"
@@ -46,6 +46,8 @@ src_prepare()
 	PATH=$N_PREFIX/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
 	pushd "programs/server" &>/dev/null
+	elog "Install missing dependencies ..."
+	npm install fast-deep-equal json-schema-traverse || die "Error in npm install"
 	elog "Installing rocker-chat ..."
 	npm install || die "Error in npm install"
 	popd
