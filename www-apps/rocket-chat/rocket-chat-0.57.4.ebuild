@@ -8,7 +8,7 @@ inherit user
 
 DESCRIPTION="The ultimate open source web chat platform"
 HOMEPAGE="https://rocket.chat/"
-SRC_URI="https://github.com/RocketChat/Rocket.Chat/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://cdn-download.rocket.chat/build/rocket.chat-${PV}.tgz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -19,7 +19,7 @@ RDEPEND="dev-db/mongodb
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
-NODEJS_VERSION="4.6.1"
+NODEJS_VERSION="4.8.4"
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
 ROCKET_USER="rocket"
@@ -45,10 +45,8 @@ src_prepare()
 	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || die "Error installing node v${NODEJS_VERSION}"
 	PATH=$N_PREFIX/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
-	pushd "programs/server" &>/dev/null
 	elog "Installing rocker-chat ..."
-	npm install || die "Error in npm install"
-	popd
+	cd programs/server && npm install || die "Error in npm install in programs/server"
 }
 
 src_install()
