@@ -46,7 +46,9 @@ src_prepare()
 	PATH=$N_PREFIX/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
 	elog "Installing rocker-chat ..."
-	cd programs/server && npm install || die "Error in npm install in programs/server"
+	pushd programs/server &>/dev/null || die "Cannot find programs/server"
+	npm install || die "Error in npm install in programs/server"
+	popd
 }
 
 src_install()
