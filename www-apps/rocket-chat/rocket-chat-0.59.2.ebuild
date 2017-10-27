@@ -43,7 +43,7 @@ src_prepare()
 	N_PREFIX="${WORKDIR}/${P}/node"
 	elog "Installing node v${NODEJS_VERSION} in $N_PREFIX ..."
 	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || die "Error installing node v${NODEJS_VERSION}"
-	PATH=$N_PREFIX/bin:$PATH
+	PATH=$N_PREFIX/n/versions/node/$NODEJS_VERSION/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
 	elog "Installing rocker-chat ..."
 	pushd programs/server &>/dev/null || die "Cannot find programs/server"
