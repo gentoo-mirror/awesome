@@ -5,7 +5,7 @@ dev-php/composer 1.0.0_alpha8 1.1.2: Dependency Manager for PHP
 dev-python/s3transfer 0.0.1: An Amazon S3 Transfer Manager for Python
 net-analyzer/prometheus 1.6.1 1.6.3 1.7.1: Prometheus monitoring system and time series database
 net-analyzer/prometheus-alertmanager 0.6.0 0.6.2 0.7.1: The Prometheus monitoring system and time series database
-net-analyzer/prometheus-node-exporter 0.13.0 0.14.0 0.15.0: Prometheus exporter for machine metrics.
+net-analyzer/prometheus-node-exporter 0.14.0 0.15.0 0.15.1: Prometheus exporter for machine metrics.
 net-im/ejabberd 15.10: The Erlang Jabber Daemon
 www-apps/ampache 3.6_rc6 3.7.0: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
 www-apps/etherpad-lite 1.6.0 1.6.1 1.6.2: A really-real time collaborative word processor for the web
