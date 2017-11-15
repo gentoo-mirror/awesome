@@ -36,11 +36,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-
-	# Fix composer lock
-	#sed -s 's/\^1.0.2/~1.0.2/g' -i composer.lock
-	#sed -s 's#https://api.github.com/repos/d11wtq/boris/zipball/125dd4e5752639af7678a22ea597115646d89c6e#https://github.com/borisrepl/boris/archive/v1.0.8.zip#g' -i composer.lock
-
     # Composer might create this
     addpredict /var/lib/net-snmp/mib_indexes
 
@@ -48,13 +43,8 @@ src_prepare() {
 	composer config -g github-oauth.github.com "$GITHUB_API_TOKEN"
 
 	einfo "Running composer  ..."
-	composer install
+	composer install --no-dev --prefer-source
 	composer dump-autoload
-
-	# Prepare config files in order to protect them as webapp configfile
-	cp "app/config/production/app.example.php" "app/config/production/app.php"
-	cp "app/config/production/database.example.php" "app/config/production/database.php"
-	cp "app/config/production/mail.example.php" "app/config/production/mail.php"
 }
 
 src_install() {
@@ -66,13 +56,11 @@ src_install() {
 	doins -r .
 
 	webapp_postinst_txt en "${FILESDIR}"/installdoc.txt
-	webapp_serverowned -R "${MY_HTDOCSDIR}/"{"app/storage","public/uploads"}
+	webapp_serverowned -R "${MY_HTDOCSDIR}/"{"storage","public/uploads"}
 
-	webapp_configfile "${MY_HTDOCSDIR}/app/config/production/app.php"
-	webapp_configfile "${MY_HTDOCSDIR}/app/config/production/database.php"
-	webapp_configfile "${MY_HTDOCSDIR}/app/config/production/mail.php"
-	webapp_configfile "${MY_HTDOCSDIR}/bootstrap/start.php"
+	newins .env.example .env
+	webapp_configfile "${MY_HTDOCSDIR}/.env"
 
 	webapp_src_install
-	fperms -R 0660 "${MY_HTDOCSDIR}/"{"app/storage","public/uploads"}
+	fperms -R 0660 "${MY_HTDOCSDIR}/"{"storage","public/uploads"}
 }
