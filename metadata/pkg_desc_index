@@ -15,4 +15,4 @@ www-apps/piwik 3.1.0 3.1.1 3.2.0: Piwik is a downloadable, open source (GPL lice
 www-apps/pydio 6.0.8 6.2.0: File sharing platform similar to dropbox
 www-apps/rocket-chat 0.57.4 0.58.4 0.59.3: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
-www-apps/snipe-it 3.0 4.1.3 4.1.4: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
+www-apps/snipe-it 4.1.3 4.1.4 4.1.5: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
