@@ -48,7 +48,7 @@ src_compile() {
 
 src_install() {
 	insinto "/usr/bin"
-	newbin "node_exporter" "prometheus-node-exporter"
+	newbin "node_exporter/node_exporter" "prometheus-node-exporter"
 
 	newconfd "${FILESDIR}/${PN}-confd" "prometheus-node-exporter"
 	newinitd "${FILESDIR}/${PN}-initd" "prometheus-node-exporter"
