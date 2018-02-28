@@ -457,6 +457,17 @@ src_prepare() {
 		sed -i -e "s|\"\$topdir\"|\"\$topdir\" ${GHC_PERSISTENT_FLAGS}|" \
 			"${S}/ghc/ghc.wrapper"
 
+		# Newer gcc have enable pie by default (see --enable-default-pie when in gcc -v).
+        # GHC seems to have problems with this flag:
+        # - https://ghc.haskell.org/trac/ghc/ticket/12759
+        # - https://ghc.haskell.org/trac/ghc/ticket/9007?cversion=0&cnum_hist=12#comment:15
+        # This results in a broken GHC because it is shipped with  non-relocatable base libraries
+        # on a system where relocatable libraries are enabled by default (--enable-default-pie).
+        # This should be fixed in GHC 8+. For GHC 7, we patch the workaround recommended here:
+        # https://ghc.haskell.org/trac/ghc/ticket/12759#comment:26
+		cd "${WORKDIR}"
+        epatch "${FILESDIR}"/${PN}-7.10.3-nopie.patch
+
 		cd "${S}" # otherwise epatch will break
 
 		epatch "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
@@ -466,16 +477,6 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-7.10.1-rc3-ghc-7.10-bootstrap.patch
 		epatch "${FILESDIR}"/${PN}-7.10.3-relnotes.patch
 		epatch "${FILESDIR}"/${PN}-7.10.3-hardfloat.patch
-
-		# Newer gcc have enable pie by default (see --enable-default-pie when in gcc -v).
-		# GHC seems to have problems with this flag:
-		# - https://ghc.haskell.org/trac/ghc/ticket/12759
-		# - https://ghc.haskell.org/trac/ghc/ticket/9007?cversion=0&cnum_hist=12#comment:15
-		# This results in a broken GHC because it is shipped with  non-relocatable base libraries 
-		# on a system where relocatable libraries are enabled by default (--enable-default-pie).
-		# This should be fixed in GHC 8+. For GHC 7, we patch the workaround recommended here:
-		# https://ghc.haskell.org/trac/ghc/ticket/12759#comment:26
-		epatch "${FILESDIR}"/${PN}-7.10.3-nopie.patch
 
 		# Since ${S}/packages does not include base, etc. add them to gen_contents_index
 		sed -e 's@\(for REPO in .*\)@\1 base integer-gmp integer-gmp2 integer-simple template-haskell@' \
@@ -488,7 +489,7 @@ src_prepare() {
 		fi
 
 		bump_libs
-
+		
 		# as we have changed the build system
 		eautoreconf
 	fi
