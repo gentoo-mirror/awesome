@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst prepare setup unpack
+DEFINED_PHASES=config install postinst prepare setup unpack
 DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-db/postgresql[server] dev-python/virtualenv[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-vcs/git
 DESCRIPTION=A federated, autonomous-style platform to host various forms of media
 EAPI=5
