@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=9999
-_eclasses_=git-2	45ff482316b52b3f96ff6b7309b77f03	webapp	a76ebd3cb5649737496e8238992dd7ca
+_eclasses_=git-2	45ff482316b52b3f96ff6b7309b77f03	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=990ab1eb8e328e3e5b72479ffc191c28
