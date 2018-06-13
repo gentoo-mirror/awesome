@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:i $
 
-EAPI=5
+EAPI=6
 
-inherit php-pear-r1 eutils
+inherit php-pear-r2 eutils
 
 DESCRIPTION="WebDAV stream wrapper class"
 
