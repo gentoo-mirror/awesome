@@ -15,7 +15,7 @@ SRC_URI="http://download.gluster.org/pub/gluster/${PN}/old-releases/$(get_versio
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )"
@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/bison
 	sys-devel/flex
+	>=sys-libs/glibc-2.26
 	test? ( >=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
 		dev-vcs/git
@@ -96,10 +97,14 @@ src_configure() {
 		$(use_enable test cmocka)
 		$(use_enable tiering)
 		$(use_enable xml xml-output)
+		$(use_with libtirpc)
 		--docdir=/usr/share/doc/${PF}
 		--localstatedir=/var
 	)
 	default
+
+	# Include sysmacros.h that is no more parrt of glibc
+	echo "#include <sys/sysmacros.h>" >> config.h
 }
 
 src_compile() {
