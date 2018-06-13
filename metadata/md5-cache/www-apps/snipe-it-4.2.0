@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare prerm pretend setup unpack
+DEPEND=dev-php/composer >=app-admin/webapp-config-1.50.15 dev-vcs/git
+DESCRIPTION=A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
+EAPI=5
+HOMEPAGE=http://snipeitapp.com
+IUSE=+ldap vhosts
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=>=dev-lang/php-5.4[crypt,fileinfo,pdo,mysql,unicode,curl,gd,ldap?] dev-php/pecl-imagick virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=4.2.0
+_eclasses_=git-2	45ff482316b52b3f96ff6b7309b77f03	webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=cdb3454f153dd0147a1e443f92548daf
