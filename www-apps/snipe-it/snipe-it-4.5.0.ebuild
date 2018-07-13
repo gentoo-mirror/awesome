@@ -10,7 +10,7 @@ DESCRIPTION="A free open source IT asset/license management system built in PHP 
 HOMEPAGE="http://snipeitapp.com"
 
 EGIT_REPO_URI="https://github.com/snipe/snipe-it.git"
-[[ ${PV} == "9999" ]] || EGIT_COMMIT=${PV}
+[[ ${PV} == "9999" ]] || EGIT_COMMIT=v${PV}
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
