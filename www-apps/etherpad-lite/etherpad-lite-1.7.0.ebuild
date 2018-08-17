@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-DEPEND=">=net-libs/nodejs-0.10.40"
+DEPEND=">=net-libs/nodejs-8.9.0"
 RDEPEND="${DEPEND}"
 
 ETHERPAD_DEST="/usr/share/${PN}"
