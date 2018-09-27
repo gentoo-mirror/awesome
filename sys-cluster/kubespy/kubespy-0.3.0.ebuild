@@ -25,5 +25,6 @@ src_prepare() {
 }
 
 src_install() {
+	GOPATH=${S} go install github.com/pulumi/kubespy/cmd/kubespy
 	dobin bin/kubespy
 }
