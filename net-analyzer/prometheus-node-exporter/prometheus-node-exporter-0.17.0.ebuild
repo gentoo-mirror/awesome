@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE=""
 
-DEPEND=">=dev-lang/go-1.5
+DEPEND=">=dev-lang/go-1.11
 		dev-vcs/mercurial"
 RDEPEND="${DEPEND}"
 
@@ -37,13 +37,13 @@ src_unpack() {
 	mv "temp" "${P}" || die
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-Makefile.patch"
-}
-
 src_compile() {
     export GOPATH="${WORKDIR}/${P}"
-	emake build
+	emake
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-Makefile.patch"
 }
 
 src_install() {
