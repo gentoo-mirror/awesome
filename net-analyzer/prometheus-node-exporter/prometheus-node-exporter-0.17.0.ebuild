@@ -39,7 +39,7 @@ src_unpack() {
 
 src_compile() {
     export GOPATH="${WORKDIR}/${P}"
-	emake
+	make
 }
 
 src_prepare() {
