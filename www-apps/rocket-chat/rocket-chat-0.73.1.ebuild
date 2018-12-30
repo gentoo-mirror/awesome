@@ -19,7 +19,7 @@ RDEPEND="dev-db/mongodb
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 
-NODEJS_VERSION="8.8.1"
+NODEJS_VERSION="8.12.0"
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
 ROCKET_USER="rocket"
