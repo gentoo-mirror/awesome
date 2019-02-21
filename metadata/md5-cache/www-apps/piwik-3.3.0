@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/php[pdo,ctype,xml] || ( <dev-lang/php-5.3[spl,reflection] >=dev-lang/php-5.3 ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.3.0
 SRC_URI=http://builds.piwik.org/piwik-3.3.0.zip
-_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=8b25bf655763e097fc0fe9c4119b9bf1
