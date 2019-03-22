@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-admin/gopass
+DESCRIPTION=An Electron based UI wrapper for your gopass on the command line.
+EAPI=6
+HOMEPAGE=https://github.com/codecentric/gopass-ui
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=app-admin/gopass
+SLOT=0
+SRC_URI=https://github.com/codecentric/gopass-ui/releases/download/v0.3.0/gopass-ui_0.3.0_amd64.deb
+_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631	user	8bd74731cafdcdad8f7a63637302e073
+_md5_=d34e899a3786d23f362f4e0a317b6aca

@@ -1,0 +1,6 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+app-admin/gopass:dmenu - Add support for x11-misc/dmenu
+app-admin/gopass:fish-completion - Enable fish completion support
