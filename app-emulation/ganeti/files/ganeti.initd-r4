@@ -44,7 +44,7 @@ start() {
 		optsvar="$(printf "${daemon}_OPTS" | tr - _ | LC_ALL=C tr '[:lower:]' '[:upper:]')"
 
 		case "${daemon#ganeti-}" in
-			masterd|rapi|luxid) is_master || continue;;
+			masterd|rapi|luxid|wconfd) is_master || continue;;
 		esac
 
 		eval daemon_opts=\"\$\{${optsvar}\}\"
