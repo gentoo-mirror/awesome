@@ -241,6 +241,8 @@ src_prepare() {
 	# take the sledgehammer approach to bug #526270
 	grep -lr '/bin/sh' "${S}" | xargs -r -- sed -i 's:/bin/sh:/bin/bash:g'
 
+	sed "s:%LIBDIR%:$(get_libdir):g" "${FILESDIR}/ganeti.initd-r4" > "${T}/ganeti.initd"
+
 	eapply_user
 
 	[[ ${PV} =~ [9]{4,} ]] && ./autogen.sh
@@ -284,7 +286,7 @@ src_configure () {
 src_install () {
 	emake V=1 DESTDIR="${D}" install
 
-	newinitd "${FILESDIR}"/ganeti.initd-r4 ${PN}
+	newinitd "${T}"/ganeti.initd ${PN}
 	newconfd "${FILESDIR}"/ganeti.confd-r2 ${PN}
 
 	if use kvm; then
