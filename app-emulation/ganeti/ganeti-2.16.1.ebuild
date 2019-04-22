@@ -123,6 +123,8 @@ DEPEND="
 	<dev-haskell/snap-server-0.10:0=
 	>=dev-haskell/case-insensitive-0.4.0.1
 
+	>=dev-haskell/unix-compat-0.4.3.1
+
 	dev-haskell/vector:0=
 	xen? ( >=app-emulation/xen-3.0 )
 	kvm? (
