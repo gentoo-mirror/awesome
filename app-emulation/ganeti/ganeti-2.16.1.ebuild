@@ -180,6 +180,7 @@ PATCHES+=(
 	"${FILESDIR}/${PN}-2.16-noded-must-run-as-root.patch"
 	"${FILESDIR}/${PN}-2.16-kvmd-run-as-daemon-user.patch"
 	"${FILESDIR}/${PN}-2.15-dont-invert-return-values-for-man-warnings.patch"
+	"${FILESDIR}/${PN}-2.16-glibc-2.26-sysmacros.patch"
 	#"${FILESDIR}/fix_ftbfs_with_sphinx_1.4"
 )
 
@@ -274,7 +275,7 @@ src_configure () {
 		$(use_enable monitoring) \
 		$(usex kvm '--with-kvm-path=' '' "/usr/bin/qemu-system-${kvm_arch}" '') \
 		$(usex haskell-daemons "--enable-confd=haskell" '' '' '') \
-		--with-haskell-flags="-optl -Wl,-z,relro -optl -Wl,--as-needed" \
+		--with-haskell-flags="-optl -Wl,-z,relro -optl -Wl,--as-needed -O0" \
 		--enable-socat-escape \
 		--enable-socat-compress
 }
