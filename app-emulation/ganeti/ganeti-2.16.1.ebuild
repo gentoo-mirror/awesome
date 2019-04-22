@@ -241,6 +241,8 @@ src_prepare() {
 	# take the sledgehammer approach to bug #526270
 	grep -lr '/bin/sh' "${S}" | xargs -r -- sed -i 's:/bin/sh:/bin/bash:g'
 
+	sed "s:%LIBDIR%:$(get_libdir):g" "${FILESDIR}/ganeti.initd-r4" > "${T}/ganeti.initd"
+
 	eapply_user
 
 	[[ ${PV} =~ [9]{4,} ]] && ./autogen.sh
