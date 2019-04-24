@@ -87,7 +87,7 @@ stop() {
 
 	for daemon in $(${DAEMON_UTIL} list-stop-daemons) ; do \
 		case "${daemon#ganeti-}" in
-			masterd|rapi|luxid) is_master || continue;;
+			masterd|rapi|luxid|wconfd) is_master || continue;;
 		esac
 		${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
 	done
