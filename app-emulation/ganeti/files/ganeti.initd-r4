@@ -84,7 +84,7 @@ stop() {
 	fi
 
 	local daemon
-
+	local ret=0
 	for daemon in $(${DAEMON_UTIL} list-stop-daemons) ; do \
 		case "${daemon#ganeti-}" in
 			masterd|rapi|luxid|wconfd) is_master && is_running ${daemon} || continue;;
@@ -92,9 +92,21 @@ stop() {
 		
 		# Overwrite daemon utils to prefer using the pidfile instead of the process name
 		pidfile="/run/ganeti/${daemon}.pid"
-		is_running $daemon && start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $pidfile $daemon
-		#${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
+		if is_running $daemon 
+		then
+			ebegin "Stopping ${daemon}"
+			if start-stop-daemon --stop --quiet --retry 30 --pidfile $pidfile $daemon 
+			then 
+				eend 0
+			else
+				eend 1
+				ret=1
+			fi
+		fi
 	done
+	
+	ebegin "Stopping"
+	eend $ret
 }
 
 is_running() {
