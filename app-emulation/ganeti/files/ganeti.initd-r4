@@ -93,4 +93,34 @@ stop() {
 	done
 }
 
+status() {
+        if ! [ -e ${DAEMON_UTIL} ]; then
+                eerror "Could not find daemon utility at ${DAEMON_UTIL}"
+                return 1
+        fi
+
+        local daemon
+	local ret=0
+
+        for daemon in $(${DAEMON_UTIL} list-stop-daemons) ; do \
+                case "${daemon#ganeti-}" in
+                        masterd|rapi|luxid|wconfd) is_master || continue;;
+                esac
+                #${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
+		pid_file="/run/ganeti/${daemon}.pid"
+		test -e $pid_file && ps -p $(cat $pid_file) &>/dev/null
+		is_running=$?
+		
+		if [[ $is_running -eq 0 ]] ; then
+			ebegin $daemon
+			eend $is_running
+		else
+			eerror $daemon
+			ewend $is_running
+			ret=1
+		fi
+        done
+	return $ret
+}
+
 # vim:ft=gentoo-init-d:ts=4:sts=4:sw=4:noet:
