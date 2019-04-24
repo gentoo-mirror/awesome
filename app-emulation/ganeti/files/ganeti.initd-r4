@@ -84,7 +84,7 @@ stop() {
 	fi
 
 	local daemon
-
+	local ret=0
 	for daemon in $(${DAEMON_UTIL} list-stop-daemons) ; do \
 		case "${daemon#ganeti-}" in
 			masterd|rapi|luxid|wconfd) is_master && is_running ${daemon} || continue;;
@@ -92,9 +92,21 @@ stop() {
 		
 		# Overwrite daemon utils to prefer using the pidfile instead of the process name
 		pidfile="/run/ganeti/${daemon}.pid"
-		is_running $daemon && start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $pidfile $daemon
-		#${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
+		if is_running $daemon 
+		then
+			ebegin "Stopping ${daemon}"
+			if start-stop-daemon --stop --quiet --retry 30 --pidfile $pidfile $daemon 
+			then 
+				eend 0
+			else
+				eend 1
+				ret=1
+			fi
+		fi
 	done
+	
+	ebegin "Stopping"
+	eend $ret
 }
 
 is_running() {
@@ -110,7 +122,7 @@ status() {
         fi
 
         local daemon
-	local ret=0
+	local ret=1
 
         for daemon in $(${DAEMON_UTIL} list-start-daemons) ; do \
                 case "${daemon#ganeti-}" in
@@ -123,6 +135,7 @@ status() {
 			if is_running $daemon
 			then
 				ebegin "$daemon: running"
+				ret=0
 				eend 0
 			else
 				eerror "$daemon: crashed"
@@ -131,14 +144,13 @@ status() {
 			fi
 		else
 			ebegin "$daemon: stopped"
-			ret=1
 		fi
         done
 
 	echo ""
 	case $ret in 
-		0) ebegin "Status: running" eend $ret ;;
-		3) ebegin "Status: crashed" eend $ret ;;
+		0) ebegin "Status: running" ; eend $ret ;;
+		3) ebegin "Status: crashed" ; eend $ret ;;
 		*) ebegin "Status: stopped" ;;
 	esac
 	return $ret
