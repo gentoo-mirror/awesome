@@ -14,7 +14,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror"
+RESTRICT="mirror network-sandbox"
 IUSE=""
 
 DEPEND=">=dev-lang/go-1.11
