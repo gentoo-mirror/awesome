@@ -21,9 +21,8 @@ else
 	DEBIAN_PV='2.16.0~rc1'
 	DEBIAN_PATCH=1
 	SRC_URI="https://github.com/ganeti/ganeti/releases/download/v${MY_PV}/ganeti-${MY_PV}.tar.gz"
-	[[ -n "${DEBIAN_PATCH}" ]] && SRC_URI="${SRC_URI}
-	  mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${DEBIAN_PV}-${DEBIAN_PATCH}.debian.tar.xz
-	"
+	[[ -n "${DEBIAN_PATCH}" ]] && 
+		SRC_URI="${SRC_URI} mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${DEBIAN_PV}-${DEBIAN_PATCH}.debian.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 	PATCHES=(
 	  "${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
@@ -114,7 +113,6 @@ DEPEND="
 	>=dev-haskell/psqueue-1.1:0=
 	<dev-haskell/psqueue-1.2:0=
 	>=dev-haskell/snap-core-0.8.1:0=
-	<dev-haskell/snap-core-0.10:0=
 	>=dev-haskell/snap-server-0.8.1:0=
 	>=dev-haskell/case-insensitive-0.4.0.1
 
