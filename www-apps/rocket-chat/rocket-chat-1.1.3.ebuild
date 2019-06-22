@@ -18,6 +18,7 @@ RDEPEND="dev-db/mongodb
 		 net-libs/nodejs
 		 media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
+RESTRICT="network-sandbox"
 
 NODEJS_VERSION="8.12.0"
 ROCKET_DEST="/usr/share/${PN}"
@@ -39,7 +40,7 @@ src_unpack()
 src_prepare()
 {
 	default
-	npm install n &>/dev/null || die "Error installing n"
+	npm install n || die "Error installing n"
 	N_PREFIX="${WORKDIR}/${P}/node"
 	elog "Installing node v${NODEJS_VERSION} in $N_PREFIX ..."
 	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || die "Error installing node v${NODEJS_VERSION}"
