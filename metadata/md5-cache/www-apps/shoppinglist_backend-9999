@@ -6,7 +6,8 @@ HOMEPAGE=https://github.com/GroundApps/ShoppingList_backend
 IUSE=vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=9999
-_eclasses_=git-2	249c1a0962573f4ce2c28f0d5b6b35d4	webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=git-2	3aabf18eba60687bbe6855eba271f688	webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=990ab1eb8e328e3e5b72479ffc191c28
