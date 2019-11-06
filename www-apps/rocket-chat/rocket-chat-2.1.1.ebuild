@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-db/mongodb
-		 net-libs/nodejs
-		 media-gfx/imagemagick[jpeg,png]"
+RDEPEND=">=dev-db/mongodb-3.6
+		net-libs/nodejs
+		media-gfx/imagemagick[jpeg,png]"
 DEPEND="${RDEPEND}"
 RESTRICT="network-sandbox"
 
