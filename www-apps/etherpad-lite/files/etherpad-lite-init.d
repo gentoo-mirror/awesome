@@ -21,7 +21,7 @@ start_pre() {
 
 start(){
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon \
+	NODE_ENV=production start-stop-daemon \
 		-S \
 		-x ${ETHERPAD_NODE} \
 		-n ${ETHERPAD_DAEMON_NAME} \
@@ -38,7 +38,7 @@ start(){
 
 stop(){
 	ebegin "Stopping ${SVCNAME}"
-        start-stop-daemon \
+        NODE_ENV=production start-stop-daemon \
                 -K \
                 -x ${ETHERPAT_NODE} \
                 -d ${ETHERPAD_PATH} \
