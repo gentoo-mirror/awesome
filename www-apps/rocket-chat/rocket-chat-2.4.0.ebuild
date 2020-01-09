@@ -20,7 +20,7 @@ RDEPEND=">=dev-db/mongodb-3.6
 DEPEND="${RDEPEND}"
 RESTRICT="network-sandbox"
 
-NODEJS_VERSION="8.12.0"
+NODEJS_VERSION="8.15.1"
 ROCKET_DEST="/usr/share/${PN}"
 ROCKET_LOG="/var/log/${PN}"
 ROCKET_USER="rocket"
