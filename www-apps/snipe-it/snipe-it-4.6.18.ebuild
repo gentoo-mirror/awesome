@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit webapp git-2
+inherit webapp git-r3
 
 DESCRIPTION="A free open source IT asset/license management system built in PHP on Laravel and Bootstrap."
 HOMEPAGE="http://snipeitapp.com"
@@ -36,10 +36,10 @@ pkg_pretend() {
 }
 
 src_prepare() {
-    # Composer might create this
-    addpredict /var/lib/net-snmp/mib_indexes
+	# Composer might create this
+	addpredict /var/lib/net-snmp/mib_indexes
 
-    # Add Github API token to composer file
+	# Add Github API token to composer file
 	composer config -g github-oauth.github.com "$GITHUB_API_TOKEN"
 
 	einfo "Running composer  ..."
