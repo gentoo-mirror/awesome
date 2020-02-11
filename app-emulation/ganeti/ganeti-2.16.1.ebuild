@@ -14,7 +14,7 @@ SERIES="$(get_version_component_range 1-2)"
 
 if [[ ${PV} =~ [9]{4,} ]] ; then
 	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 	PATCHES=()
 else
