@@ -13,7 +13,7 @@ RESTRICT="network-sandbox"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="markdown"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -35,6 +35,12 @@ src_prepare()
 {
 	default
 	./bin/installDeps.sh || die
+}
+
+src_compile() 
+{
+	default
+	use markdown && npm install ep_markdown
 }
 
 src_install()
