@@ -16,7 +16,7 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="+ldap"
 
-RDEPEND=">=dev-lang/php-7.1.3[crypt,fileinfo,pdo,mysql,unicode,curl,gd,ldap?]
+RDEPEND=">=dev-lang/php-7.1.3[fileinfo,pdo,mysql,unicode,curl,gd,ldap?]
 		dev-php/pecl-imagick
 		virtual/httpd-php"
 DEPEND="dev-php/composer"
