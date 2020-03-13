@@ -1,4 +1,3 @@
-app-admin/gopass 1.8.1 1.8.2: The slightly more awesome standard unix password manager for teams
 app-admin/gopass-ui 0.3.0 0.4.0: An Electron based UI wrapper for your gopass on the command line.
 app-backup/buttersink 0.6.9: rsync-like utility for btrfs snapshots
 app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
