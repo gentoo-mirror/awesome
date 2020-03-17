@@ -40,10 +40,15 @@ src_unpack()
 src_prepare()
 {
 	default
+	export NPM_CONFIG_PREFIX="${WORKDIR}/${P}"
+	test -d $NPM_CONFIG_PREFIX || mkdir $NPM_CONFIG_PREFIX
 	npm install n || die "Error installing n"
 	N_PREFIX="${WORKDIR}/${P}/node"
+
 	elog "Installing node v${NODEJS_VERSION} in $N_PREFIX ..."
-	N_PREFIX=$N_PREFIX ./node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || die "Error installing node v${NODEJS_VERSION}"
+	N_PREFIX=$N_PREFIX $NPM_CONFIG_PREFIX/node_modules/n/bin/n -q ${NODEJS_VERSION} &>/dev/null || \
+		die "Error installing node v${NODEJS_VERSION}"
+
 	PATH=$N_PREFIX/n/versions/node/$NODEJS_VERSION/bin:$PATH
 	elog "Using $(which node) $(node --version) ..."
 	elog "Installing rocker-chat ..."
