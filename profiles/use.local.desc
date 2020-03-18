@@ -2,8 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-admin/gopass:dmenu - Add support for x11-misc/dmenu
-app-admin/gopass:fish-completion - Enable fish completion support
 app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:experimental - Enable experimental patches. Warning! This will break RPC within major versions if the patches applied differ!
 app-emulation/ganeti:haskell-daemons - Build haskell daemons instead of python
