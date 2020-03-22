@@ -137,7 +137,7 @@ DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
 	$(python_gen_cond_dep '
-		<=dev-python/sphinx-1.3.5[${PYTHON_MULTI_USEDEP}]
+		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
 	')
 	media-fonts/urw-fonts
 	media-gfx/graphviz
