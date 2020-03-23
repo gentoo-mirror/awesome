@@ -135,12 +135,7 @@ RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
 DEPEND+="
 	sys-devel/m4
-	app-text/pandoc
-	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-	')
 	media-fonts/urw-fonts
-	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
 	<dev-haskell/test-framework-0.9:0=
 	>=dev-haskell/test-framework-hunit-0.2.7:0=
