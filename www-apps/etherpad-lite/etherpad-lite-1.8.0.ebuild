@@ -34,6 +34,8 @@ pkg_setup() {
 src_prepare()
 {
 	default
+	export NPM_CONFIG_PREFIX="${WORKDIR}/${P}"
+	test -d $NPM_CONFIG_PREFIX || mkdir $NPM_CONFIG_PREFIX
 	./bin/installDeps.sh || die
 }
 
