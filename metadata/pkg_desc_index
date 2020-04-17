@@ -10,6 +10,7 @@ media-tv/mkchromecast 0.3.8.1: Cast macOS and Linux Audio/Video to your Google C
 net-analyzer/prometheus-node-exporter 0.17.0 0.18.0 0.18.1: Prometheus exporter for machine metrics.
 net-im/ejabberd 15.10: The Erlang Jabber Daemon
 sys-cluster/glusterfs 3.7.6: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/kubectl 1.18.2: CLI to run commands against Kubernetes clusters
 sys-cluster/kubespy 0.3.0: Tools for observing Kubernetes resources in real time
 sys-cluster/stern 1.8.0 1.10.0 1.11.0: Multi pod and container log tailing for Kubernetes
 www-apps/etherpad-lite 1.6.6 1.7.0 1.8.0: A really-real time collaborative word processor for the web
