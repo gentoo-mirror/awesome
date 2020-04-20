@@ -1,4 +1,4 @@
-app-admin/gopass-ui 0.3.0 0.4.0: An Electron based UI wrapper for your gopass on the command line.
+app-admin/gopass-ui 0.3.0 0.4.0 0.7.0: An Electron based UI wrapper for your gopass on the command line.
 app-backup/buttersink 0.6.9: rsync-like utility for btrfs snapshots
 app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
 app-emulation/ganeti 2.16.1-r3: Ganeti is a virtual server management software tool
