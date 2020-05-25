@@ -17,6 +17,6 @@ www-apps/etherpad-lite 1.6.6 1.7.0 1.8.4: A really-real time collaborative word 
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
 www-apps/piwik 3.2.0 3.2.1 3.3.0: Piwik is a downloadable, open source (GPL licensed) real time web analytics software program.
 www-apps/pydio 6.0.8 6.2.0: File sharing platform similar to dropbox
-www-apps/rocket-chat 3.0.12 3.1.2 3.2.0: The ultimate open source web chat platform
+www-apps/rocket-chat 3.0.12 3.1.2 3.2.2: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
 www-apps/snipe-it 4.6.18 4.7.8 4.9.0: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
