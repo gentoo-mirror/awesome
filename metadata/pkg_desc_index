@@ -1,7 +1,5 @@
 app-admin/gopass-ui 0.3.0 0.4.0 0.7.0: An Electron based UI wrapper for your gopass on the command line.
-app-backup/buttersink 0.6.9: rsync-like utility for btrfs snapshots
 app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
-app-emulation/ganeti 2.16.1-r3: Ganeti is a virtual server management software tool
 dev-go/dep 0.5.0: Go dependency management tool
 dev-go/govendor 1.0.9: Go vendor tool that works with the standard vendor file.
 dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
@@ -10,7 +8,6 @@ dev-python/zeroconf 0.25.1: Pure Python Multicast DNS Service Discovery Library 
 media-tv/mkchromecast 0.3.8.1 0.3.9: Cast macOS and Linux Audio/Video to your Google Cast and Sonos Devices
 net-analyzer/prometheus-node-exporter 0.17.0 0.18.0 0.18.1: Prometheus exporter for machine metrics.
 net-im/ejabberd 15.10: The Erlang Jabber Daemon
-sys-cluster/glusterfs 3.7.6: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/kubectl 1.18.2: CLI to run commands against Kubernetes clusters
 sys-cluster/kubespy 0.3.0: Tools for observing Kubernetes resources in real time
 sys-cluster/stern 1.8.0 1.10.0 1.11.0: Multi pod and container log tailing for Kubernetes
