@@ -3,11 +3,12 @@ DEPEND=dev-lang/go >=dev-go/govendor-1.0.9 >=dev-lang/go-1.10
 DESCRIPTION=Multi pod and container log tailing for Kubernetes
 EAPI=6
 HOMEPAGE=https://github.com/wercker/stern
+INHERIT=golang-vcs-snapshot golang-build
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=dev-lang/go >=dev-go/govendor-1.0.9
 RESTRICT=network-sandbox
 SLOT=0
 SRC_URI=https://github.com/wercker/stern/archive/1.11.0.tar.gz -> stern-1.11.0.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	golang-build	91472d4e18894e738c69b415e236a664
 _md5_=40df51f283fc54ebf4f09fd13c1b9a6a
