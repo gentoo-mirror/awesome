@@ -10,5 +10,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=9999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=db2c6a2f98576977c03e79b1b2b63cf9
