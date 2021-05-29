@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=>=dev-db/mongodb-3.6 net-libs/nodejs media-gfx/imagemagick[jpeg,png]
+DESCRIPTION=The ultimate open source web chat platform
+EAPI=5
+HOMEPAGE=https://rocket.chat/
+INHERIT=user
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=dev-db/mongodb-3.6 net-libs/nodejs media-gfx/imagemagick[jpeg,png]
+RESTRICT=network-sandbox
+SLOT=0
+SRC_URI=https://cdn-download.rocket.chat/build/rocket.chat-3.15.0.tgz -> rocket-chat-3.15.0.tar.gz
+_eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
+_md5_=97759214267d3a44cec4e365dd1e190c
