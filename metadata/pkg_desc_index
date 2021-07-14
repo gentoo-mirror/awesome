@@ -14,6 +14,6 @@ sys-cluster/stern 1.8.0 1.10.0 1.11.0: Multi pod and container log tailing for K
 www-apps/etherpad-lite 1.6.6 1.7.0 1.8.4: A really-real time collaborative word processor for the web
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
 www-apps/pydio 6.0.8 6.2.0: File sharing platform similar to dropbox
-www-apps/rocket-chat 3.14.2 3.15.0 3.16.1 3.16.2: The ultimate open source web chat platform
+www-apps/rocket-chat 3.14.6 3.15.4 3.16.3: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
 www-apps/snipe-it 4.6.18 4.7.8 4.9.4: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
