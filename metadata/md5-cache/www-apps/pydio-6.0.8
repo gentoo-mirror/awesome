@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst prerm setup
-DEPEND=webdav? ( dev-php/PEAR-HTTP_WebDAV_Client ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DEPEND=webdav? ( dev-php/PEAR-HTTP_WebDAV_Client ) virtual/httpd-php app-admin/webapp-config
 DESCRIPTION=File sharing platform similar to dropbox
 EAPI=5
 HOMEPAGE=https://pyd.io/
@@ -7,8 +7,8 @@ INHERIT=webapp
 IUSE=+webdav vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=AGPL-3
-RDEPEND=webdav? ( dev-php/PEAR-HTTP_WebDAV_Client ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RDEPEND=webdav? ( dev-php/PEAR-HTTP_WebDAV_Client ) virtual/httpd-php app-admin/webapp-config
 SLOT=6.0.8
 SRC_URI=http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.0.8/pydio-core-6.0.8.tar.gz/download -> pydio-6.0.8.tar.gz
-_eclasses_=webapp	cd327e73cdb307ceb80dcca6b8ad8b52
+_eclasses_=webapp	60f2eb31dec733d05e8114cc078ebc33
 _md5_=efbccadd0edae07b40ab9614e0337994
