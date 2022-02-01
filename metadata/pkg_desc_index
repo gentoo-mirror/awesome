@@ -6,13 +6,10 @@ dev-php/PEAR-HTTP_WebDAV_Client 1.0.2: WebDAV stream wrapper class
 dev-python/pychromecast 7.2.1: Python module to talk to Google Chromecast.
 dev-python/zeroconf 0.25.1: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 media-tv/mkchromecast 0.3.8.1 0.3.9: Cast macOS and Linux Audio/Video to your Google Cast and Sonos Devices
-net-analyzer/prometheus-node-exporter 0.17.0 0.18.0 0.18.1: Prometheus exporter for machine metrics.
 sys-cluster/kubectl 1.18.2: CLI to run commands against Kubernetes clusters
 sys-cluster/kubespy 0.3.0: Tools for observing Kubernetes resources in real time
 sys-cluster/stern 1.8.0 1.10.0 1.11.0: Multi pod and container log tailing for Kubernetes
-www-apps/etherpad-lite 1.6.6 1.7.0 1.8.4: A really-real time collaborative word processor for the web
 www-apps/orangehrm 3.3.1: OrangeHRM is an Open Source Human Resource Management System
 www-apps/pydio 6.0.8 6.2.0: File sharing platform similar to dropbox
-www-apps/rocket-chat 3.16.3 3.17.1: The ultimate open source web chat platform
 www-apps/shoppinglist_backend 9999: Backend for a Android based app called ShoppingList
 www-apps/snipe-it 4.6.18 4.7.8 4.9.4: A free open source IT asset/license management system built in PHP on Laravel and Bootstrap.
