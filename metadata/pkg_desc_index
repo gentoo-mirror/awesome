@@ -1,4 +1,4 @@
-app-admin/gopass-ui 0.3.0 0.4.0 0.7.0: An Electron based UI wrapper for your gopass on the command line.
+app-admin/gopass-ui 0.8.0: An Electron based UI wrapper for your gopass on the command line.
 app-crypt/heimdal 9999: Kerberos 5 implementation from KTH
 dev-go/dep 0.5.0: Go dependency management tool
 dev-go/govendor 1.0.9: Go vendor tool that works with the standard vendor file.
