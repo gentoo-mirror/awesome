@@ -10,5 +10,5 @@ LICENSE=AGPL-3
 RDEPEND=webdav? ( dev-php/PEAR-HTTP_WebDAV_Client ) virtual/httpd-php app-admin/webapp-config
 SLOT=6.2.0
 SRC_URI=http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/6.2.0/pydio-core-6.2.0.tar.gz/download -> pydio-6.2.0.tar.gz
-_eclasses_=webapp	60f2eb31dec733d05e8114cc078ebc33
+_eclasses_=webapp	cbf94d7383f416c5ead4634aa89916a9
 _md5_=8d8082f0a0a5394b4e8533366a29e9ca
