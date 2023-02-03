@@ -28,7 +28,7 @@ DEPEND=">=dev-python/pychromecast-7.2.1
 		media-libs/flac
 		ffmpeg? ( media-video/ffmpeg[vorbis] )
 		qt? ( dev-python/PyQt5 )
-		net-misc/youtube-dl"
+		net-misc/yt-dlp"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
