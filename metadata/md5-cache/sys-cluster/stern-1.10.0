@@ -10,5 +10,5 @@ RDEPEND=dev-lang/go >=dev-go/govendor-1.0.9
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/wercker/stern/archive/1.10.0.tar.gz -> stern-1.10.0.tar.gz
-_eclasses_=golang-base	9f0e420ab37bc55a318d74bab3aae891	golang-vcs-snapshot	6864f899c6843043ba23620fcd4a908c	golang-build	0bd4f7f8de6ac61b4224cb690c5ea321
+_eclasses_=golang-base	9f0e420ab37bc55a318d74bab3aae891	golang-vcs-snapshot	80659643e60eb07e6df6ff936b7d5f66	golang-build	b689e250dc38d720b04019511cd5806f
 _md5_=efc5d7a55ffb7cc2e9ab3a314b1aecf4
