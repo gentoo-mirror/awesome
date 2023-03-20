@@ -1,3 +1,0 @@
-To run OrangeHRM through NGinx, create a new site configuration, add
-"/var/www/${VHOST_HOSTNAME}/htdocs/orangehrm/symfony/web/" as root and include
-"/etc/nginx/conf.d/orangehrm".
