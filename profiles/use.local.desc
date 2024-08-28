@@ -2,3 +2,13 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-misc/nnn:8contexts - Enable 8 contexts (instead of 4)
+app-misc/nnn:colemak - Key bindings for Colemak keyboard layout
+app-misc/nnn:colemak-dh - Key bindings for Colemak-DH keyboard layout
+app-misc/nnn:emoji - Display icons using emoji
+app-misc/nnn:gitstatus - Add git status column to the detail view
+app-misc/nnn:icons - Display icons using icons-in-terminal
+app-misc/nnn:namefirst - Print filenames first in the detail view
+app-misc/nnn:nerdfonts - Display icons using nerdfonts icons
+app-misc/nnn:qsort - Use Alexey Tourbin's quick sort implementation
+app-misc/nnn:restorepreview - Add pipe to close and restore preview-tui for internal undetached edits
