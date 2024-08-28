@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl] app-admin/webapp-config
+DESCRIPTION=Backend for a Android based app called ShoppingList
+EAPI=5
+HOMEPAGE=https://github.com/GroundApps/ShoppingList_backend
+INHERIT=git-r3 webapp
+IUSE=vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=virtual/httpd-php app-admin/webapp-config
+SLOT=9999
+_eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53	webapp	67df5bab481d0b9428f9ab7b3de690e4
+_md5_=db2c6a2f98576977c03e79b1b2b63cf9

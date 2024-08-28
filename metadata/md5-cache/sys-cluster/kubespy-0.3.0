@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-lang/go >=dev-go/dep-0.5.0 >=dev-lang/go-1.10
+DESCRIPTION=Tools for observing Kubernetes resources in real time
+EAPI=6
+HOMEPAGE=https://github.com/pulumi/kubespy
+KEYWORDS=~amd64
+RDEPEND=dev-lang/go >=dev-go/dep-0.5.0
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/pulumi/kubespy/archive/v0.3.0.tar.gz -> kubespy-0.3.0.tar.gz
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_md5_=3289c63b0b40826fc45c405b16a4baee
